@@ -1,0 +1,47 @@
+Setup
+======
+
+1) mkdir Marxx - Creates Marxx folder
+2) cd Marxx - Goes into Marxx folder
+3) touch log.txt - Creates a text file called log to log all commands used to create this project.
+
+Removes and re-install create-react-app
+----------------------------------------
+4) npm uninstall -g create-react-app
+5) npx clear-nix-cache
+6) npm i create-react-app
+----------------------------------------
+7) npx create-react-app@latest frontend - Creates React App called Marxx
+
+Testing
+=======
+8) cd frontend - goes into frontend folder
+9) npm start - Starts React application name frontend
+
+Line 9 Gives Error ( Something is already running on port 3000 )
+-----------------------------------------------------------------
+10) npx kill-port 3000 - Kills the process running on port 3000
+11) npm start - Starts React app ( Works! )
+
+Remove Unnecessary Files from React App
+=======================================
+11) Go to frontend / src / App.js
+12) Remove all content under the header tag ( <header /> ), className(s), and the imports.
+13) Create an anchor tag to link to the root ( / ) of the application and name it marxx.
+14) Create a main section ( <main />) ) and place List products inside below the header tag. 
+15) Go to frontend / src / index.css
+16) Remove the code element
+17) Create a header element and add properties: background-color, and padding
+18) Set the anchor link inside header color property to white, and 
+	text-decoration to none ( Removes underline ), font-weight to bold
+	and font-size to 2rem.
+
+Create a Git Repository and Push it to Github
+==============================================
+19) Remove the git file from frontend and create another git file in the root direction ( Marxx )
+20) cd frontend - Goes to frontend folder
+21) rm -rf .git ( Removes the git file )
+22) Move the .gitignore file from frontend to Marxx. ( Drag and drop method in VS code )
+23) Go to .gitignore and remove the forward slash ( / ) from node_modules and build to ignore node_modules and build folders inside all sub folders.
+24) Go to VS code and click on source control icon located to the upper-left side of the app. 
+25) Click Initialize Repository
