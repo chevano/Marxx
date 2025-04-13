@@ -1,30 +1,39 @@
-Setup
-======
+===========================
+Setup ( Create React App )
+===========================
 
 1) mkdir Marxx - Creates Marxx folder
 2) cd Marxx - Goes into Marxx folder
 3) touch log.txt - Creates a text file called log to log all commands used to create this project.
 
+----------------------------------------
 Removes and re-install create-react-app
 ----------------------------------------
 4) npm uninstall -g create-react-app
-5) npx clear-nix-cache
+5) npx clear-npx-cache
 6) npm i create-react-app
 ----------------------------------------
 7) npx create-react-app@latest frontend - Creates React App called Marxx
 
+
+==============
 Testing
-=======
+==============
+
 8) cd frontend - goes into frontend folder
 9) npm start - Starts React application name frontend
 
+-----------------------------------------------------------------
 Line 9 Gives Error ( Something is already running on port 3000 )
 -----------------------------------------------------------------
 10) npx kill-port 3000 - Kills the process running on port 3000
 11) npm start - Starts React app ( Works! )
 
+
+========================================
 Remove Unnecessary Files from React App
-=======================================
+========================================
+
 11) Go to frontend / src / App.js
 12) Remove all content under the header tag ( <header /> ), className(s), and the imports.
 13) Create an anchor tag to link to the root ( / ) of the application and name it marxx.
@@ -36,12 +45,289 @@ Remove Unnecessary Files from React App
 	text-decoration to none ( Removes underline ), font-weight to bold
 	and font-size to 2rem.
 
+
+==============================================
 Create a Git Repository and Push it to Github
 ==============================================
+
 19) Remove the git file from frontend and create another git file in the root direction ( Marxx )
-20) cd frontend - Goes to frontend folder
-21) rm -rf .git ( Removes the git file )
+20) cd frontend  -   Goes to frontend folder
+21) rm -rf .git  -   Removes the git file
 22) Move the .gitignore file from frontend to Marxx. ( Drag and drop method in VS code )
-23) Go to .gitignore and remove the forward slash ( / ) from node_modules and build to ignore node_modules and build folders inside all sub folders.
-24) Go to VS code and click on source control icon located to the upper-left side of the app. 
-25) Click Initialize Repository
+23) Go to .gitignore and remove the forward slash ( / ) from node_modules and build to ignore all sub folders inside node_modules and build folders .
+24) cd ..       - Go to Marxx folder which is one directory above frontend folder 
+25) git init    -  Initialize Repo
+26) git add .   - Tracks All Files
+27) git commit -m "initial commit"  -  Commit first message
+28) git status  -  Checks the status of the files in the repo
+29) Create a cloud Repo by going to github.com and log in
+30) Create a new Repo ( Click on the new icon, go to github.com/new if you can't find the icon )
+31) Name Repo Marxx, set view to public, add a README file then click create repository.
+
+--------------------------------------------------
+Push an existing repository from the command line
+--------------------------------------------------
+
+32) git remote add origin https://github.com/chevano/Marxx.git  - Establishing a remote connection with GitHub
+33) git branch -M main
+34) git push -u origin main ( Complains about wrong credentials because it needs a token instead of a password )
+
+------------------------
+Resolve merge conflict
+------------------------
+
+35) Go to settings by clicking on the profile pic icon
+36) Click Developer settings
+37) Click on Personal access tokens and select tokens (classic)
+38) Generate token and add the token instead of a password when running line 34 again
+39) After running line 34 you will then run into a merge conflict type the following commands:
+39a) git reset --mixed origin/main
+39b) git add.
+39c) git commit -m "Resolving merge conflict"
+39d) git push origin main
+
+Note: git reset --mixed origin/main can also be written git reset origin/main, since the mixed option is the default one when using git reset.
+
+
+==============================================
+Create a List of Products using a card layout
+==============================================
+
+---------------------------
+Create products array
+---------------------------
+
+40a) Go to Marxx / frontend / src and create a file called data.js
+40b) Inside data.js create an object called ( data ) of type const, that contains an array of objects to store a list of products, where this array of objects is called ( products ) and have the following fields: 
+	( name, category, image, price, countInStock, brand, rating, numReviews, description ).
+
+
+-----------------------
+Add product images
+-----------------------
+
+41a) cd Marxx/frontend/public - Go to Marxx / frontend / public
+41b) mkdir images             - Create a folder called images 
+41c) Populate the folder with some pics
+
+--------------------
+Render products
+--------------------
+
+42a) Go to Marxx / frontend / src / App.js
+42b) Use a map function to loop and display the products inside the data array
+42b1)
+
+**********************************************************************
+import data from './data';
+
+function App() {
+  return (
+    <div>
+      <header>
+        <a href="/">Marxx</a>
+      </header>
+      <main>
+        <h1> List of Products </h1>
+        <div className="products">
+          {data.products.map((product) => (
+            <div className="product" key={product.name}>
+              <a href={`/product/${product.name}`}>
+                <img src={product.image} alt={product.name} />
+              </a>
+              <div className="product-info">
+                <p> {product.name} </p>
+                <p>
+                  <strong>${product.price}</strong>
+                </p>
+                <button> Add to cart </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default App;
+***********************************************************************************
+
+-------------------
+Style products
+-------------------
+
+43a) Go to Marxx / frontend / src / index.css
+43b) Style the products, and products className using flexbox to lay them out along the x-axis.
+43b1)
+
+*************************************************************************************
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background-color: lightblue;
+  padding: 1.1rem;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+main {
+  padding: 1rem;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.product-info {
+  padding: 1rem;
+}
+********************************************************************************************
+
+=======================================================
+Save Changes and Push it to Github : Update log file 2
+=======================================================
+44) git add .
+45) git commit -m "Create List Products and an Array of Products"
+46) git push origin main
+
+
+
+=============================================================
+Implement Routing to configure routes for different pages
+=============================================================
+
+47) cd Marxx/frontend  -  Go to Marxx / frontend
+48) npm i react-router-dom  -  Install routing package ( Enables routing in react applications )
+49) Go to reactrouter.com and looking under the Routers Section for how to implement BrowserRouter
+50) Go to Marxx / frontend / src / App and wrap the content of App() inside BrowserRouter and implement Routes, and Route as follow:
+50a)
+
+******************************************************************
+import data from './data';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <header>
+          <a href="/">Marxx</a>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+          </Routes>
+          <h1> List of Products </h1>
+          <div className="products">
+            {data.products.map((product) => (
+              <div className="product" key={product.name}>
+                <a href={`/product/${product.name}`}>
+                  <img src={product.image} alt={product.name} />
+                </a>
+                <div className="product-info">
+                  <p> {product.name} </p>
+                  <p>
+                    <strong>${product.price}</strong>
+                  </p>
+                  <button> Add to cart </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+*************************************************************************
+
+51) cd Marxx/frontend/src   -   Go to Marxx / frontend / src
+52) Create a folder called ( screens ) and 2 files namely; ( HomeScreen.js ) and ( ProductScreen.js )
+53) Create a functional component for both HomeScreen.js and ProductScreen.js that reads Home Screen, Product Screen respectively. 
+53a)
+**************************************
+function HomeScreen() {
+  return <div> Home Screen </div>;
+}
+
+export default HomeScreen;
+***************************************
+
+
+
+53b)
+***************************************
+import { useParams } from 'react-router-dom';
+
+function ProductScreen() {
+  const params = useParams();
+  const { name } = params; // get the name parameter from the url (params)
+
+  return (
+    <div>
+      <h1> Product Screen </h1>
+      <p> {name} </p>
+    </div>
+  );
+}
+
+export default ProductScreen;
+
+***************************************
+
+
+54) Place all the code inside App() below <Routes> from Marxx/frontend/src/App inside HomeScreen from Marxx/frontend/src/screens/HomeScreen.js
+55) Inside ProductScreen() use the ( useParams ) hook to get the ( name ) parameter from the url
+56) Change all ( a ) tags to ( Link ) tags to remove the page refresh and also because we are now using react-router-dom.
+
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 3
+=======================================================
+
+57) Go to Marxx folder
+58) git add .
+59) git commit -m "Implement Routing"
+60) git push origin main
+
+=======================================================
+Save Changes and Push it to Github : Update log file 4
+=======================================================
+
+Log file did not Update
+-----------------------
+57) Go to Marxx folder
+58) git add .
+59) git commit -m "Updating log file 4"
+60) git push origin main
+
