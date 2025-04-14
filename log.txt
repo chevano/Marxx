@@ -381,3 +381,74 @@ Save Changes and Push it to Github : Update log file 5
 82) git add .
 83) git commit -m "Create a Backend API using NodeJS Server"
 84) git push origin main
+
+
+==================================
+Fetch Products from Backend
+==================================
+
+85) Go to Marxx/frontend/package.json
+86) Inside ( package.json ) file add the following command ( "proxy": "http://localhost:5000" )
+87) npm install axios  -  Run command inside Marxx/frontend folder. Is an HTTP client that simplifies making API calls
+88) Go to Marxx/frontend/src/HomeScreen
+89) Create a useState hook called ( [products, setProducts] ) to manage the state of the products on the backend, where the default value is an empty array ( [] )
+90) Use useEffect() and axios to fetch the data from the backend as follows:
+
+***********************************************************************************************************
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+// import data from '../data';
+
+function HomeScreen() {
+  const [products, setProducts] = useState([]); // use to manage the state of the products on the backend
+
+  // Runs the function once after rendering the components
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
+      setProducts(result.data);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1> List of Products </h1>
+      <div className="products">
+        {products.map((product) => (
+          <div className="product" key={product.name}>
+            <Link to={`/product/${product.name}`}>
+              <img src={product.image} alt={product.name} />
+            </Link>
+            <div className="product-info">
+              <Link to={`/product/${product.name}`}>
+                <p> {product.name} </p>
+              </Link>
+              <p>
+                <strong>${product.price}</strong>
+              </p>
+              <button> Add to cart </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default HomeScreen;
+***********************************************************************************************************
+
+91) run npm start in the backend and frontend folder
+92) To ensure that the list of products is coming from the backend, inspect the page on http://localhost:3000 and go to Network and select Fetch / XHR
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 6
+=======================================================
+
+81) Go to Marxx folder
+82) git add .
+83) git commit -m "Retrieve data from the Backend"
+84) git push origin main
