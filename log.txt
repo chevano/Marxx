@@ -326,8 +326,58 @@ Save Changes and Push it to Github : Update log file 4
 
 Log file did not Update
 -----------------------
-57) Go to Marxx folder
-58) git add .
-59) git commit -m "Updating log file 4"
-60) git push origin main
+61) Go to Marxx folder
+62) git add .
+63) git commit -m "Updating log file 4"
+64) git push origin main
 
+===========================================
+Create a Backend API using NodeJS Server
+===========================================
+
+65) cd Marxx  -  Go to root folder ( Marxx )
+66) mkdir backend - Creates a folder called ( backend ) in the root directory
+67) cd backend  -  Go to ( backend ) folder, where we will create a nodejs project
+68) npm init  -  Initialize a project and create the package.json file
+69) Press Enter to every prompt to accept the default settings
+70) Inside the ( package.json ) file, after the name property, put a comma and add the command ( "type": "module")
+which tells Node.js to interpret .js files within that package as using ES module syntax.
+71) Create a ( server.js ) file inside backend folder to hold all the server related code like installing and using express.js
+72) npm install express  -  Installs the express server ( express.js ), which will create ( node_modules ) folder and ( package-lock.json ) file inside the ( backend ) folder
+73) Copy ( data.js ) file from Marxx/frontend/src to Marxx/backend  ( will remove duplicates later )
+74) Create a server inside ( server.js ) file using express as follows:
+
+*********************************************************************************
+import express from 'express';
+import data from './data.js';
+
+const app = express(); // Initializes a new instance of an Express App
+
+// Returns a list of products when the user makes a GET request to /api/products
+app.get('/api/products', (req, res) => {
+  res.send(data.products);
+});
+
+const port = process.env.PORT || 5000;
+
+// Starts Server
+app.listen(port, () => {
+  console.log(`server at http://localhost:${port}`);
+});
+*********************************************************************************
+
+75) Note all .js files in server should have the .js extention on every imports
+76) run node server.js  -  Starts backend server
+77) run npm install nodemon --save-dev  -  Install nodemon to update the server whenever you have a change in the code inside the ( backend ) folder
+78) Press control + c to stop server
+79) Go to Marxx/backend/package.json and add the command ( "start": "nodemon server.js" ) inside "scripts"
+80) run npm start  -  After adding the above command we don't need to use ( nodemon server.js or node server.js ) to start the server
+
+=======================================================
+Save Changes and Push it to Github : Update log file 5
+=======================================================
+
+81) Go to Marxx folder
+82) git add .
+83) git commit -m "Create a Backend API using NodeJS Server"
+84) git push origin main
