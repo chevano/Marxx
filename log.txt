@@ -440,15 +440,119 @@ function HomeScreen() {
 export default HomeScreen;
 ***********************************************************************************************************
 
-91) run npm start in the backend and frontend folder
-92) To ensure that the list of products is coming from the backend, inspect the page on http://localhost:3000 and go to Network and select Fetch / XHR
+91) Remove the duplicate data.js file from Marxx/frontend/src/data.js
+92) run npm start in the backend and frontend folder
+93) To ensure that the list of products is coming from the backend, inspect the page on http://localhost:3000 and go to Network and select Fetch / XHR
 
 
 =======================================================
 Save Changes and Push it to Github : Update log file 6
 =======================================================
 
-81) Go to Marxx folder
-82) git add .
-83) git commit -m "Retrieve data from the Backend"
-84) git push origin main
+94) Go to Marxx folder
+95) git add .
+96) git commit -m "Retrieve data from the Backend"
+97) git push origin main
+
+==================================================================
+Replacing useState with useReducer Hooks to manage complex states
+==================================================================
+
+98) Go to Marxx/frontend/src/sreens/HomeScreen
+99) Above the HomeScreen functional component define a reducer function called ( reducer ) that will handle the following states:
+99a) Create a Failed State called ( FETCH_FAIL ) 
+99b) Create a Successful State called ( FETCH_SUCCESS)
+99c) Create a Pending State, where the user makes a request called ( FETCH_REQUEST )
+99d) And a default state where the user does something else 
+99e) Create and set the following fields inside the reducer for each state; loading, products, and error.
+100) Replace the useState hook ( [products, setProducts ] = useState([]) ) with a useReducer hook that sets the default state of ( loading ) to true, ( error ) to an empty string, and ( products ) to an empty array.
+101) Get State from useReducer by making a call to the ( dispatch ) function, dispatching an action inside the ( fetchData() )
+102) Render the loading, and error variables as needed in the JSX in Marxx/frontend/src/screens/HomeScreen
+103) For debugging purposes install a logger called ( use-reducer-logger )
+104) Go to Marxx/frontend
+105) npm install use-reducer-logger --force
+106) import logger from 'use-reducer-logger
+107) Sample Code listed below
+
+***************************************************************************************************************
+import { useEffect, useReducer, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import logger from 'use-reducer-logger';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
+    case 'FETCH_SUCCESS':
+      return { ...state, loading: false, products: action.payload }; // Update products with the data from the backend found in ( action.payload )
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
+    default:
+      return state; // returns current state
+  }
+};
+
+function HomeScreen() {
+  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
+    loading: true,
+    error: '',
+    products: [],
+  });
+
+  // Runs the function once after rendering the components
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1> List of Products </h1>
+      <div className="products">
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          products.map((product) => (
+            <div className="product" key={product.name}>
+              <Link to={`/product/${product.name}`}>
+                <img src={product.image} alt={product.name} />
+              </Link>
+              <div className="product-info">
+                <Link to={`/product/${product.name}`}>
+                  <p> {product.name} </p>
+                </Link>
+                <p>
+                  <strong>${product.price}</strong>
+                </p>
+                <button> Add to cart </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default HomeScreen;
+***************************************************************************************************************
+
+=======================================================
+Save Changes and Push it to Github : Update log file 7
+=======================================================
+
+108) Go to Marxx folder
+109) git add .
+110) git commit -m "Replacing useState with useReducer Hooks to manage complex states"
+111) git push origin main
