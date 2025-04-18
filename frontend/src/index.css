@@ -5,22 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgrey;
 }
 
-header {
-  background-color: lightblue;
-  padding: 1.1rem;
-}
-
-header a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 2rem;
+.site-container {
+  min-height: 100vh;
 }
 
 main {
-  padding: 1rem;
+  flex: 1; /* Divides the nav, main, and footer sections */
 }
 
 .products {
@@ -42,4 +35,8 @@ main {
 
 .product-info {
   padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
 }

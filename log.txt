@@ -556,3 +556,141 @@ Save Changes and Push it to Github : Update log file 7
 109) git add .
 110) git commit -m "Replacing useState with useReducer Hooks to manage complex states"
 111) git push origin main
+
+==========================
+Add Bootstrap to project
+==========================
+
+112) Go to react-bootstrap.github.io and click get started and follow the instructions
+113) Go to Marxx/frontend 
+114) Run npm install react-bootstrap bootstrap  -  Install React Bootstrap package
+115) Go to Marxx/frontend/src/App.js and Update the file as follows
+116) Inside the ( header ) element, create a Navbar component using boostrap Navbar
+117) Include imports for navbar namely ( react-bootstrap/Navbar ), Container namely ( react-bootstrap/Container ), and LinkContainer namely ( react-router-boostrap )
+118) Update Marxx/frontend/src/index.css and remove all the styling for the header tag
+119) Go to Marxx/frontend/src/index.js and import bootstrap before ( index.css ) the import is as follows import ( 'bootstrap/dist/css/bootstrap.min.css' )
+120) Go to Marxx/frontend/src/App.js and wrap the main tag inside a Container component (<Container>) to create a nice alignment between the nav section and the main section.
+121) Add a footer element below the main element and inside the footer element add some content.
+122) Use react bootstrap flexbox to divide up the nav, main, and footer sections by adding styles ( "d-flex flex-column site-container" ) 
+inside the main div in ( App.js ), where site-container is a className created to set the ( min-height to 100vh ) in ( index.css )
+
+App.js
+-------
+*********************************************************************************
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="d-flex flex-column site-container">
+        <header>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <Link className="link" to="/">
+                <Navbar.Brand>Marxx</Navbar.Brand>
+              </Link>
+            </Container>
+          </Navbar>
+        </header>
+        <main>
+          <Container>
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/product/:name" element={<ProductScreen />} />
+            </Routes>
+          </Container>
+        </main>
+        <footer>
+          <div className="text-center">All rights reserved</div>
+        </footer>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+*********************************************************************************
+
+
+index.css
+---------
+*********************************************************************************
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: lightgrey;
+}
+
+.site-container {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Divides the nav, main, and footer sections */
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
+}
+*********************************************************************************
+
+index.js
+--------
+*********************************************************************************
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+*********************************************************************************
+
+=======================================================
+Save Changes and Push it to Github : Update log file 8
+=======================================================
+
+123) Go to Marxx folder
+124) git add .
+125) git commit -m "Add Bootstrap to Project"
+126) git push origin main
