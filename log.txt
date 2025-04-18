@@ -694,3 +694,340 @@ Save Changes and Push it to Github : Update log file 8
 124) git add .
 125) git commit -m "Add Bootstrap to Project"
 126) git push origin main
+
+==========================================================================
+Create Rating and Product Component and adding Bootstrap to HomeScreen.js
+==========================================================================
+
+127) Before Creating the Rating and Product Component go to Marxx/frontend/src/screens/Homescreen.js and replacing the css styling with bootstrap styling
+128) Wrap ( products.map ) inside a Row container ( <Row> ) and inside the Row Container add a pair of curly braces
+129) Below ( products.map ) add a Col container  ( <Col> ) that wraps the remaining code of ( products.map )
+130) Add the following imports to add Row and Col Container respectively ( import Row from 'react-bootstrap/Row' ), ( import Col from 'react-bootstrap/Col' )
+131) Remove the code inside ( <Col> ) and use it to create a component called ( Products ) for reusability later.
+132) Go to Marxx/frontend/src and create a folder called ( components ) and inside the ( components ) folder, add a file called ( Product.js ), which signifies a react component
+133) Go to Marxx/frontend/src/component/Product.js
+134) Create a Product Component using the code snippet cut inside the Col component ( <Col> )
+135) Inside the ( Product ) Component replace the main div with a card component ( <Card> )
+136) Set the img tag className to ("card-img-top" ), which makes the image stick to the top of the card
+137) Wrap the Remaining code inside a Card.Body component ( <Card.Body> ) and make the following changes:
+137a) Replace the p tag that displays the name with a Card.Title component ( <Card.Title> )
+137b) Replace the other p tag that displays the price with a Card.Text component ( <Card.Text> )
+137c) Replace the html element button ( <button> ) tag with a react-bootstrap component button ( <Button> )
+138) Add the import for the Button component ( import Button from 'react-bootstrap/Button' )
+139) Below the ( Link ) component that contains the name of the product ( product.name ) add a Rating component ( <Rating> ) with rating and numReviews properties
+140) Go to Marxx/frontend/src/component and create a file called ( Rating.js ) that signifies a react component
+141) Go to Marxx/frontend/src/component/Rating.js and Define a component called ( Rating ) that deconstruct the ( rating ) and ( numReviews ) properties and displays them in JSX 
+142) Use font Awesome to display stars in the JSX
+143) Go to Marxx/frontend/public/index.html, in the header section add a link to connect to font awesome cdn
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+144) Import ( Rating ) component inside ( Product ) component using ( import Rating from './Rating' )
+145) Go to Marxx/frontend/src/index.css and target all the span tags inside rating className to change the color of the stars displayed to gold
+146) In index.css type ( .btn-primary { background-color: #f0c040; color: #000000;})
+
+HomeScreen.js
+-------------
+************************************************************************************************************************
+import { useEffect, useReducer } from 'react';
+import axios from 'axios';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Product from '../components/Product';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
+    case 'FETCH_SUCCESS':
+      return { ...state, loading: false, products: action.payload }; // Update products with the data from the backend found in ( action.payload )
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
+    default:
+      return state; // returns current state
+  }
+};
+
+function HomeScreen() {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+    loading: true,
+    error: '',
+    products: [],
+  });
+
+  // Runs the function once after rendering the components
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1> List of Products </h1>
+      <div className="products">
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          <Row>
+            {products.map((product) => (
+              <Col
+                key={product.name}
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                className="mb-3"
+              >
+                <Product product={product}></Product>
+              </Col>
+            ))}
+          </Row>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default HomeScreen;
+************************************************************************************************************************
+
+
+Rating.js
+----------
+************************************************************************************************************************
+function Rating(props) {
+  const { rating, numReviews } = props;
+
+  return (
+    <div className="rating">
+      {/* Using font Awesome to display stars depending on the number of ratings: full star, half of an star, or an empty star */}
+      <span>
+        <i
+          className={
+            rating >= 1
+              ? 'fas fa-star'
+              : rating >= 0.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        />
+      </span>
+
+      <span>
+        <i
+          className={
+            rating >= 2
+              ? 'fas fa-star'
+              : rating >= 1.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        />
+      </span>
+
+      <span>
+        <i
+          className={
+            rating >= 3
+              ? 'fas fa-star'
+              : rating >= 2.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        />
+      </span>
+
+      <span>
+        <i
+          className={
+            rating >= 4
+              ? 'fas fa-star'
+              : rating >= 3.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        />
+      </span>
+
+      <span>
+        <i
+          className={
+            rating >= 5
+              ? 'fas fa-star'
+              : rating >= 4.5
+              ? 'fas fa-star-half-alt'
+              : 'far fa-star'
+          }
+        />
+      </span>
+
+      <span>
+        {'   '}
+        {numReviews} <strong>reviews</strong>
+      </span>
+    </div>
+  );
+}
+
+export default Rating;
+************************************************************************************************************************
+
+
+Product.js
+-----------
+************************************************************************************************************************
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import Rating from './Rating';
+
+function Product(props) {
+  const { product } = props;
+
+  return (
+    <Card>
+      <Link to={`/product/${product.name}`}>
+        <img className="card-img-top" src={product.image} alt={product.name} />
+      </Link>
+      <Card.Body>
+        <Link to={`/product/${product.name}`}>
+          <Card.Title> {product.name} </Card.Title>
+        </Link>
+        <Rating rating={product.rating} numReviews={product.numReviews} />
+        <Card.Text>{<strong>${product.price}</strong>}</Card.Text>
+        <Button> Add to cart </Button>
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default Product;
+
+************************************************************************************************************************
+
+
+index.html
+************************************************************************************************************************
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+************************************************************************************************************************
+
+index.css
+************************************************************************************************************************
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: lightgrey;
+}
+
+.site-container {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Divides the nav, main, and footer sections */
+}
+
+.btn-primary {
+  background-color: #f0c040;
+  color: #000000;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.rating span {
+  color: #ffc000;
+}
+************************************************************************************************************************
+
+=======================================================
+Save Changes and Push it to Github : Update log file 9
+=======================================================
+
+147) Go to Marxx folder
+148) git add .
+149) git commit -m "Create Rating and Product Component and adding Bootstrap to HomeScreen.js"
+150) git push origin main

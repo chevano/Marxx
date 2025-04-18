@@ -16,6 +16,11 @@ main {
   flex: 1; /* Divides the nav, main, and footer sections */
 }
 
+.btn-primary {
+  background-color: #f0c040;
+  color: #000000;
+}
+
 .products {
   display: flex;
   flex-direction: row;
@@ -39,4 +44,8 @@ main {
 
 .link {
   text-decoration: none;
+}
+
+.rating span {
+  color: #ffc000;
 }
