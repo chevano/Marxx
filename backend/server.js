@@ -8,6 +8,17 @@ app.get('/api/products', (req, res) => {
   res.send(data.products);
 });
 
+app.get('/api/products/name/:name', (req, res) => {
+  // Checks whether the request product name is in the backend
+  // If it exist then the product will be returned otherwise will get an error message
+  const product = data.products.find((x) => x.name === req.params.name);
+
+  if (product) {
+    res.send(product);
+  } else {
+    res.status(404).send({ message: 'Product Not Found' });
+  }
+});
 const port = process.env.PORT || 5000;
 
 // Starts Server
