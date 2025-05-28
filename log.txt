@@ -89,9 +89,9 @@ Resolve merge conflict
 Note: git reset --mixed origin/main can also be written git reset origin/main, since the mixed option is the default one when using git reset.
 
 
-==============================================
-Create a List of Products using a card layout
-==============================================
+============================================================
+Home Screen : Create a List of Products using a card layout
+============================================================
 
 ---------------------------
 Create products array
@@ -116,42 +116,6 @@ Render products
 
 42a) Go to Marxx / frontend / src / App.js
 42b) Use a map function to loop and display the products inside the data array
-42b1)
-
-**********************************************************************
-import data from './data';
-
-function App() {
-  return (
-    <div>
-      <header>
-        <a href="/">Marxx</a>
-      </header>
-      <main>
-        <h1> List of Products </h1>
-        <div className="products">
-          {data.products.map((product) => (
-            <div className="product" key={product.name}>
-              <a href={`/product/${product.name}`}>
-                <img src={product.image} alt={product.name} />
-              </a>
-              <div className="product-info">
-                <p> {product.name} </p>
-                <p>
-                  <strong>${product.price}</strong>
-                </p>
-                <button> Add to cart </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
-  );
-}
-
-export default App;
-***********************************************************************************
 
 -------------------
 Style products
@@ -159,55 +123,6 @@ Style products
 
 43a) Go to Marxx / frontend / src / index.css
 43b) Style the products, and products className using flexbox to lay them out along the x-axis.
-43b1)
-
-*************************************************************************************
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-header {
-  background-color: lightblue;
-  padding: 1.1rem;
-}
-
-header a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-main {
-  padding: 1rem;
-}
-
-.products {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product {
-  border: 1px #404040 solid;
-  margin: 1rem;
-}
-
-.product img {
-  width: 100%;
-  max-width: 400px;
-}
-
-.product-info {
-  padding: 1rem;
-}
-********************************************************************************************
 
 =======================================================
 Save Changes and Push it to Github : Update log file 2
@@ -218,93 +133,17 @@ Save Changes and Push it to Github : Update log file 2
 
 
 
-=============================================================
-Implement Routing to configure routes for different pages
-=============================================================
+========================================================================
+Home Screen : Implement Routing to configure routes for different pages
+========================================================================
 
 47) cd Marxx/frontend  -  Go to Marxx / frontend
 48) npm i react-router-dom  -  Install routing package ( Enables routing in react applications )
 49) Go to reactrouter.com and looking under the Routers Section for how to implement BrowserRouter
 50) Go to Marxx / frontend / src / App and wrap the content of App() inside BrowserRouter and implement Routes, and Route as follow:
-50a)
-
-******************************************************************
-import data from './data';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <div>
-        <header>
-          <a href="/">Marxx</a>
-        </header>
-        <main>
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-          </Routes>
-          <h1> List of Products </h1>
-          <div className="products">
-            {data.products.map((product) => (
-              <div className="product" key={product.name}>
-                <a href={`/product/${product.name}`}>
-                  <img src={product.image} alt={product.name} />
-                </a>
-                <div className="product-info">
-                  <p> {product.name} </p>
-                  <p>
-                    <strong>${product.price}</strong>
-                  </p>
-                  <button> Add to cart </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
-    </BrowserRouter>
-  );
-}
-
-export default App;
-*************************************************************************
-
 51) cd Marxx/frontend/src   -   Go to Marxx / frontend / src
 52) Create a folder called ( screens ) and 2 files namely; ( HomeScreen.js ) and ( ProductScreen.js )
 53) Create a functional component for both HomeScreen.js and ProductScreen.js that reads Home Screen, Product Screen respectively. 
-53a)
-**************************************
-function HomeScreen() {
-  return <div> Home Screen </div>;
-}
-
-export default HomeScreen;
-***************************************
-
-
-
-53b)
-***************************************
-import { useParams } from 'react-router-dom';
-
-function ProductScreen() {
-  const params = useParams();
-  const { name } = params; // get the name parameter from the url (params)
-
-  return (
-    <div>
-      <h1> Product Screen </h1>
-      <p> {name} </p>
-    </div>
-  );
-}
-
-export default ProductScreen;
-
-***************************************
-
-
 54) Place all the code inside App() below <Routes> from Marxx/frontend/src/App inside HomeScreen from Marxx/frontend/src/screens/HomeScreen.js
 55) Inside ProductScreen() use the ( useParams ) hook to get the ( name ) parameter from the url
 56) Change all ( a ) tags to ( Link ) tags to remove the page refresh and also because we are now using react-router-dom.
@@ -331,9 +170,9 @@ Log file did not Update
 63) git commit -m "Updating log file 4"
 64) git push origin main
 
-===========================================
-Create a Backend API using NodeJS Server
-===========================================
+=======================================================
+Home Screen : Create a Backend API using NodeJS Server
+=======================================================
 
 65) cd Marxx  -  Go to root folder ( Marxx )
 66) mkdir backend - Creates a folder called ( backend ) in the root directory
@@ -346,26 +185,6 @@ which tells Node.js to interpret .js files within that package as using ES modul
 72) npm install express  -  Installs the express server ( express.js ), which will create ( node_modules ) folder and ( package-lock.json ) file inside the ( backend ) folder
 73) Copy ( data.js ) file from Marxx/frontend/src to Marxx/backend  ( will remove duplicates later )
 74) Create a server inside ( server.js ) file using express as follows:
-
-*********************************************************************************
-import express from 'express';
-import data from './data.js';
-
-const app = express(); // Initializes a new instance of an Express App
-
-// Returns a list of products when the user makes a GET request to /api/products
-app.get('/api/products', (req, res) => {
-  res.send(data.products);
-});
-
-const port = process.env.PORT || 5000;
-
-// Starts Server
-app.listen(port, () => {
-  console.log(`server at http://localhost:${port}`);
-});
-*********************************************************************************
-
 75) Note all .js files in server should have the .js extention on every imports
 76) run node server.js  -  Starts backend server
 77) run npm install nodemon --save-dev  -  Install nodemon to update the server whenever you have a change in the code inside the ( backend ) folder
@@ -383,9 +202,9 @@ Save Changes and Push it to Github : Update log file 5
 84) git push origin main
 
 
-==================================
-Fetch Products from Backend
-==================================
+==========================================
+Home Screen : Fetch Products from Backend
+==========================================
 
 85) Go to Marxx/frontend/package.json
 86) Inside ( package.json ) file add the following command ( "proxy": "http://localhost:5000" )
@@ -393,53 +212,6 @@ Fetch Products from Backend
 88) Go to Marxx/frontend/src/HomeScreen
 89) Create a useState hook called ( [products, setProducts] ) to manage the state of the products on the backend, where the default value is an empty array ( [] )
 90) Use useEffect() and axios to fetch the data from the backend as follows:
-
-***********************************************************************************************************
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-// import data from '../data';
-
-function HomeScreen() {
-  const [products, setProducts] = useState([]); // use to manage the state of the products on the backend
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
-      setProducts(result.data);
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1> List of Products </h1>
-      <div className="products">
-        {products.map((product) => (
-          <div className="product" key={product.name}>
-            <Link to={`/product/${product.name}`}>
-              <img src={product.image} alt={product.name} />
-            </Link>
-            <div className="product-info">
-              <Link to={`/product/${product.name}`}>
-                <p> {product.name} </p>
-              </Link>
-              <p>
-                <strong>${product.price}</strong>
-              </p>
-              <button> Add to cart </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default HomeScreen;
-***********************************************************************************************************
-
 91) Remove the duplicate data.js file from Marxx/frontend/src/data.js
 92) run npm start in the backend and frontend folder
 93) To ensure that the list of products is coming from the backend, inspect the page on http://localhost:3000 and go to Network and select Fetch / XHR
@@ -454,9 +226,9 @@ Save Changes and Push it to Github : Update log file 6
 96) git commit -m "Retrieve data from the Backend"
 97) git push origin main
 
-==================================================================
-Replacing useState with useReducer Hooks to manage complex states
-==================================================================
+================================================================================
+Home Screen : Replacing useState with useReducer Hooks to manage complex states
+================================================================================
 
 98) Go to Marxx/frontend/src/sreens/HomeScreen
 99) Above the HomeScreen functional component define a reducer function called ( reducer ) that will handle the following states:
@@ -474,79 +246,6 @@ Replacing useState with useReducer Hooks to manage complex states
 106) import logger from 'use-reducer-logger
 107) Sample Code listed below
 
-***************************************************************************************************************
-import { useEffect, useReducer, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import logger from 'use-reducer-logger';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload }; // Update products with the data from the backend found in ( action.payload )
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
-    default:
-      return state; // returns current state
-  }
-};
-
-function HomeScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
-    loading: true,
-    error: '',
-    products: [],
-  });
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
-      }
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1> List of Products </h1>
-      <div className="products">
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          products.map((product) => (
-            <div className="product" key={product.name}>
-              <Link to={`/product/${product.name}`}>
-                <img src={product.image} alt={product.name} />
-              </Link>
-              <div className="product-info">
-                <Link to={`/product/${product.name}`}>
-                  <p> {product.name} </p>
-                </Link>
-                <p>
-                  <strong>${product.price}</strong>
-                </p>
-                <button> Add to cart </button>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default HomeScreen;
-***************************************************************************************************************
 
 =======================================================
 Save Changes and Push it to Github : Update log file 7
@@ -557,9 +256,9 @@ Save Changes and Push it to Github : Update log file 7
 110) git commit -m "Replacing useState with useReducer Hooks to manage complex states"
 111) git push origin main
 
-==========================
-Add Bootstrap to project
-==========================
+=====================================
+Bootstrap : Add Bootstrap to project
+=====================================
 
 112) Go to react-bootstrap.github.io and click get started and follow the instructions
 113) Go to Marxx/frontend 
@@ -574,117 +273,6 @@ Add Bootstrap to project
 122) Use react bootstrap flexbox to divide up the nav, main, and footer sections by adding styles ( "d-flex flex-column site-container" ) 
 inside the main div in ( App.js ), where site-container is a className created to set the ( min-height to 100vh ) in ( index.css )
 
-App.js
--------
-*********************************************************************************
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <div className="d-flex flex-column site-container">
-        <header>
-          <Navbar bg="dark" variant="dark">
-            <Container>
-              <Link className="link" to="/">
-                <Navbar.Brand>Marxx</Navbar.Brand>
-              </Link>
-            </Container>
-          </Navbar>
-        </header>
-        <main>
-          <Container>
-            <Routes>
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/product/:name" element={<ProductScreen />} />
-            </Routes>
-          </Container>
-        </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
-        </footer>
-      </div>
-    </BrowserRouter>
-  );
-}
-
-export default App;
-*********************************************************************************
-
-
-index.css
----------
-*********************************************************************************
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: lightgrey;
-}
-
-.site-container {
-  min-height: 100vh;
-}
-
-main {
-  flex: 1; /* Divides the nav, main, and footer sections */
-}
-
-.products {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product {
-  border: 1px #404040 solid;
-  margin: 1rem;
-}
-
-.product img {
-  width: 100%;
-  max-width: 400px;
-}
-
-.product-info {
-  padding: 1rem;
-}
-
-.link {
-  text-decoration: none;
-}
-*********************************************************************************
-
-index.js
---------
-*********************************************************************************
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-*********************************************************************************
 
 =======================================================
 Save Changes and Push it to Github : Update log file 8
@@ -695,9 +283,9 @@ Save Changes and Push it to Github : Update log file 8
 125) git commit -m "Add Bootstrap to Project"
 126) git push origin main
 
-==========================================================================
-Create Rating and Product Component and adding Bootstrap to HomeScreen.js
-==========================================================================
+======================================================================================
+Bootstrap : Create Rating and Product Component and adding Bootstrap to HomeScreen.js
+======================================================================================
 
 127) Before Creating the Rating and Product Component go to Marxx/frontend/src/screens/Homescreen.js and replacing the css styling with bootstrap styling
 128) Wrap ( products.map ) inside a Row container ( <Row> ) and inside the Row Container add a pair of curly braces
@@ -724,304 +312,6 @@ Create Rating and Product Component and adding Bootstrap to HomeScreen.js
 145) Go to Marxx/frontend/src/index.css and target all the span tags inside rating className to change the color of the stars displayed to gold
 146) In index.css type ( .btn-primary { background-color: #f0c040; color: #000000;})
 
-HomeScreen.js
--------------
-************************************************************************************************************************
-import { useEffect, useReducer } from 'react';
-import axios from 'axios';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Product from '../components/Product';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload }; // Update products with the data from the backend found in ( action.payload )
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
-    default:
-      return state; // returns current state
-  }
-};
-
-function HomeScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-    products: [],
-  });
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
-      }
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1> List of Products </h1>
-      <div className="products">
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          <Row>
-            {products.map((product) => (
-              <Col
-                key={product.name}
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                className="mb-3"
-              >
-                <Product product={product}></Product>
-              </Col>
-            ))}
-          </Row>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default HomeScreen;
-************************************************************************************************************************
-
-
-Rating.js
-----------
-************************************************************************************************************************
-function Rating(props) {
-  const { rating, numReviews } = props;
-
-  return (
-    <div className="rating">
-      {/* Using font Awesome to display stars depending on the number of ratings: full star, half of an star, or an empty star */}
-      <span>
-        <i
-          className={
-            rating >= 1
-              ? 'fas fa-star'
-              : rating >= 0.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        />
-      </span>
-
-      <span>
-        <i
-          className={
-            rating >= 2
-              ? 'fas fa-star'
-              : rating >= 1.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        />
-      </span>
-
-      <span>
-        <i
-          className={
-            rating >= 3
-              ? 'fas fa-star'
-              : rating >= 2.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        />
-      </span>
-
-      <span>
-        <i
-          className={
-            rating >= 4
-              ? 'fas fa-star'
-              : rating >= 3.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        />
-      </span>
-
-      <span>
-        <i
-          className={
-            rating >= 5
-              ? 'fas fa-star'
-              : rating >= 4.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
-          }
-        />
-      </span>
-
-      <span>
-        {'   '}
-        {numReviews} <strong>reviews</strong>
-      </span>
-    </div>
-  );
-}
-
-export default Rating;
-************************************************************************************************************************
-
-
-Product.js
------------
-************************************************************************************************************************
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import Rating from './Rating';
-
-function Product(props) {
-  const { product } = props;
-
-  return (
-    <Card>
-      <Link to={`/product/${product.name}`}>
-        <img className="card-img-top" src={product.image} alt={product.name} />
-      </Link>
-      <Card.Body>
-        <Link to={`/product/${product.name}`}>
-          <Card.Title> {product.name} </Card.Title>
-        </Link>
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>{<strong>${product.price}</strong>}</Card.Text>
-        <Button> Add to cart </Button>
-      </Card.Body>
-    </Card>
-  );
-}
-
-export default Product;
-
-************************************************************************************************************************
-
-
-index.html
-************************************************************************************************************************
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
-************************************************************************************************************************
-
-index.css
-************************************************************************************************************************
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: lightgrey;
-}
-
-.site-container {
-  min-height: 100vh;
-}
-
-main {
-  flex: 1; /* Divides the nav, main, and footer sections */
-}
-
-.btn-primary {
-  background-color: #f0c040;
-  color: #000000;
-}
-
-.products {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product {
-  border: 1px #404040 solid;
-  margin: 1rem;
-}
-
-.product img {
-  width: 100%;
-  max-width: 400px;
-}
-
-.product-info {
-  padding: 1rem;
-}
-
-.link {
-  text-decoration: none;
-}
-
-.rating span {
-  color: #ffc000;
-}
-************************************************************************************************************************
 
 =======================================================
 Save Changes and Push it to Github : Update log file 9
@@ -1034,7 +324,7 @@ Save Changes and Push it to Github : Update log file 9
 
 
 ================================================
-Create Product Details Screen ( Product Screen )
+Product Screen : Create Product Details Screen
 ================================================
 
 151) Go to Marxx/frontend/src/screens/HomeScreen.js and copy the ( reducer ) function, the code for ( useReducer ) as well as ( useEffect ) and paste it in ( ProductScreen.js ) 
@@ -1052,168 +342,6 @@ the product that has the request url name on the backend, or sends an error mess
 160) Go to Marxx/frontend/src/App.js and add margin to the top of the screen by setting the Container container ( <Container> ) className to mt-5
 
 
-ProductScreen.js
-----------------
-*********************************************************************************************************
-import axios from 'axios';
-import { useEffect, useReducer } from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
-import Card from 'react-bootstrap/Card';
-import { useParams } from 'react-router-dom';
-import Rating from '../components/Rating';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, product: action.payload }; // Update product with the data from the backend found in ( action.payload )
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
-    default:
-      return state; // returns current state
-  }
-};
-
-function ProductScreen() {
-  const params = useParams();
-  const { name } = params; // get the name parameter from the url (params)
-
-  const [{ loading, error, product }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-    product: [],
-  });
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get(`/api/products/name/${name}`); // Sends an AJAX request to the requested address
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
-      }
-    };
-    fetchData();
-  }, [name]);
-
-  return loading ? (
-    <div>Loading...</div>
-  ) : error ? (
-    <div>{error}</div>
-  ) : (
-    <div>
-      <h1> {name} </h1>
-      <Row>
-        <Col md={6}>
-          <img className="img-large" src={product.image} alt={product.name} />
-        </Col>
-
-        <Col md={3}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <h1> {product.name} </h1>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <Rating
-                rating={product.rating}
-                numReviews={product.numReviews}
-              ></Rating>
-            </ListGroup.Item>
-
-            <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
-
-            <ListGroup.Item>
-              Description : <p>{product.description}</p>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-
-        <Col md={3}>
-          <Card>
-            <Card.Body>
-              {/* Made to be flush to remove outer borders and rounded corners, 
-              making list group items appear edge-to-edge within a contain, such as a card */}
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <Row>
-                    <Col> Price: </Col>
-                    <Col> ${product.price} </Col>
-                  </Row>
-                </ListGroup.Item>
-
-                <ListGroup.Item>
-                  <Row>
-                    <Col> Status: </Col>
-                    <Col>
-                      {product.countInStock > 0 ? (
-                        <Badge bg="success"> In Stock </Badge>
-                      ) : (
-                        <Badge bg="danger"> Unavailable </Badge>
-                      )}
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <div className="d-grid">
-                      <Button variant="primary">Add to Cart</Button>
-                    </div>
-                  </ListGroup.Item>
-                )}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
-  );
-}
-
-export default ProductScreen;
-*********************************************************************************************************
-
-server.js
----------
-
-***********************************************************************************************************
-import express from 'express';
-import data from './data.js';
-
-const app = express(); // Initializes a new instance of an Express App
-
-// Returns a list of products when the user makes a GET request to /api/products
-app.get('/api/products', (req, res) => {
-  res.send(data.products);
-});
-
-app.get('/api/products/name/:name', (req, res) => {
-  // Checks whether the request product name is in the backend
-  // If it exist then the product will be returned otherwise will get an error message
-  const product = data.products.find((x) => x.name === req.params.name);
-
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: 'Product Not Found' });
-  }
-});
-const port = process.env.PORT || 5000;
-
-// Starts Server
-app.listen(port, () => {
-  console.log(`server at http://localhost:${port}`);
-});
-***********************************************************************************************************
-
 =======================================================
 Save Changes and Push it to Github : Update log file 10
 =======================================================
@@ -1224,9 +352,9 @@ Save Changes and Push it to Github : Update log file 10
 164) git push origin main
 
 
-=====================================
-Create Message and Loading component
-=====================================
+======================================================
+Product Screen : Create Message and Loading component
+======================================================
 
 165) Create Loading Component
 165a) Go to Marxx/frontend/src/components and create a file called ( LoadingBox.js ) that will be used as the loading Component
@@ -1246,260 +374,6 @@ and inside the Spinner Container create a span tag that has the className attrib
 170) Import ( getError ) function in both ( HomeScreen.js ) and ( ProductScreen.js )
 
 
-utils.js
---------
-*******************************************************************************
-// Returns the error message on the backend if it exist, otherwise will return
-// the general error message from the error object like a 404 error message
-
-export const getError = (error) => {
-  return error.response && error.response.data.message
-    ? error.response.data.message
-    : error.message;
-};
-*******************************************************************************
-
-
-HomeScreen.js
--------------
-*******************************************************************************
-import { useEffect, useReducer } from 'react';
-import axios from 'axios';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Product from '../components/Product';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
-import { getError } from '../utils';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload }; // Update products with the data from the backend found in ( action.payload )
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
-    default:
-      return state; // returns current state
-  }
-};
-
-function HomeScreen() {
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-    products: [],
-  });
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get('/api/products'); // Sends an AJAX request to the requested address
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
-      }
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1> List of Products </h1>
-      <div className="products">
-        {loading ? (
-          <LoadingBox />
-        ) : error ? (
-          <MessageBox variant="danger"> {error} </MessageBox>
-        ) : (
-          <Row>
-            {products.map((product) => (
-              <Col
-                key={product.name}
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                className="mb-3"
-              >
-                <Product product={product}></Product>
-              </Col>
-            ))}
-          </Row>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default HomeScreen;
-*******************************************************************************
-
-
-ProductScreen.js
------------------
-*******************************************************************************
-import axios from 'axios';
-import { useEffect, useReducer } from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
-import Card from 'react-bootstrap/Card';
-import { useParams } from 'react-router-dom';
-import Rating from '../components/Rating';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
-import { getError } from '../utils';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_REQUEST':
-      return { ...state, loading: true }; // Update loading to true while keeping the previous state the same
-    case 'FETCH_SUCCESS':
-      return { ...state, loading: false, product: action.payload }; // Update product with the data from the backend found in ( action.payload )
-    case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload }; // Sets the error field with the data from the backend
-    default:
-      return state; // returns current state
-  }
-};
-
-function ProductScreen() {
-  const params = useParams();
-  const { name } = params; // get the name parameter from the url (params)
-
-  const [{ loading, error, product }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-    product: [],
-  });
-
-  // Runs the function once after rendering the components
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' });
-      try {
-        const result = await axios.get(`/api/products/name/${name}`); // Sends an AJAX request to the requested address
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
-      }
-    };
-    fetchData();
-  }, [name]);
-
-  return loading ? (
-    <LoadingBox />
-  ) : error ? (
-    <MessageBox variant="danger"> {error} </MessageBox>
-  ) : (
-    <div>
-      <h1> {name} </h1>
-      <Row>
-        <Col md={6}>
-          <img className="img-large" src={product.image} alt={product.name} />
-        </Col>
-
-        <Col md={3}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <h1> {product.name} </h1>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <Rating
-                rating={product.rating}
-                numReviews={product.numReviews}
-              ></Rating>
-            </ListGroup.Item>
-
-            <ListGroup.Item>Price : ${product.price}</ListGroup.Item>
-
-            <ListGroup.Item>
-              Description : <p>{product.description}</p>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-
-        <Col md={3}>
-          <Card>
-            <Card.Body>
-              {/* Made to be flush to remove outer borders and rounded corners, 
-              making list group items appear edge-to-edge within a contain, such as a card */}
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <Row>
-                    <Col> Price: </Col>
-                    <Col> ${product.price} </Col>
-                  </Row>
-                </ListGroup.Item>
-
-                <ListGroup.Item>
-                  <Row>
-                    <Col> Status: </Col>
-                    <Col>
-                      {product.countInStock > 0 ? (
-                        <Badge bg="success"> In Stock </Badge>
-                      ) : (
-                        <Badge bg="danger"> Unavailable </Badge>
-                      )}
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <div className="d-grid">
-                      <Button variant="primary">Add to Cart</Button>
-                    </div>
-                  </ListGroup.Item>
-                )}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
-  );
-}
-
-export default ProductScreen;
-
-*******************************************************************************
-
-
-LoadingBox.js
--------------
-*******************************************************************************
-import Spinner from 'react-bootstrap/Spinner';
-
-export default function LoadingBox() {
-  return (
-    <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading</span>
-    </Spinner>
-  );
-}
-*******************************************************************************
-
-
-MessageBox.js
--------------
-*******************************************************************************
-import Alert from 'react-bootstrap/Alert';
-
-function MessageBox(props) {
-  return <Alert variant={props.variant || 'info'}> {props.children} </Alert>;
-}
-
-export default MessageBox;
-*******************************************************************************
-
 =======================================================
 Save Changes and Push it to Github : Update log file 11
 =======================================================
@@ -1508,3 +382,37 @@ Save Changes and Push it to Github : Update log file 11
 172) git add .
 173) git commit -m "Create Message and Loading component"
 174) git push origin main
+
+
+========================================================
+Cart Screen : Implement Add to Cart Functionality Start
+========================================================
+
+175) Create a Store using React Context
+176) Go to marxx/frontend/src
+177) Create a file called ( Store.js ) that will act as a react store inside the ( src ) folder
+178) Create a Store using createContext() as follows: export const Store = createContext();
+179) Define a Store Provider Function and inside the function create a useReducer hook that accepts a reducer called ( reducer ) and a variable to keep track of all the items in the shopping cart called ( initialState )
+180) Define a reducer function called ( reducer )
+181) Create variable called ( initialState ) that holds a ( cart ) object and inside the cart object, create an array called ( cartItems ) that will hold the list of items in the shopping cart
+181) Create a value object that will hold properties (state) and (dispatch) that will be passed to the <Store.Provider> Component
+182) Inside the StoreProvider function, return a ( <Store.Provider ) component
+183) Go to marxx/frontend/src/index.js 
+184) Inside index.js below the ( <React.StrictMode> ) component, wrap the remaining code inside the ( <StoreProvider> ) component
+185) Go to marxx/frontend/src/screens/ProductScreen.js
+186) Inside ProductScreen.js scroll down at the bottom of the page where the last ( <ListGroup.Item> ) component is and add an onClick handler called ( addToCartHandler)
+187) Define the addToCartHandler function at the top of the file
+188) Retrieve State, and dispatch properties from useContext()
+189) Implement the Cart Badge UI
+190) Go to App.js and below the ( <Link> ) component, create a ( <Nav> ) component that consist of the Cart and its Badge
+191) Go to ProductScreen and Implement Add to Cart Button and Click Handler
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 12
+=======================================================
+
+192) Go to Marxx folder
+193) git add .
+194) git commit -m "Implement Add to Cart Functionality Start"
+195) git push origin main
