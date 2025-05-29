@@ -416,3 +416,29 @@ Save Changes and Push it to Github : Update log file 12
 193) git add .
 194) git commit -m "Implement Add to Cart Functionality Start"
 195) git push origin main
+
+
+========================================================
+Cart Screen : Finish Add to Cart Functionality 
+========================================================
+
+196) Go to marxx/backend/data.js and add a new field called ( _id ) to each object inside the ( products ) arry inside ( data ) that holds the id for each product
+197) Populate the ( _id ) field 
+198) Go to marxx/frontend/screens/ProductScreen.js and update the ( cart ) state to send ajax request to the backend
+199) Go to marxx/backend/server.js and handle the ajax request that was sent on the frontend in ProductScreen.js
+200) Go to marxx/frontend/src/Store.js and fix the current issue of adding the same product multiple times to the cart,
+to only adding duplicate item once, while keeping tracking of the product quantity, which will be later display as a badge number
+201) Go to marxx/frontend/App.js and update the Cart badge to show the correct number of items in the shopping cart 
+by calling the reduce function on ( cart.cartItems ) which holds the number of items in the cart as well as its quantities
+202) Go to marxx/frontend/ProductScreen.js and update the ( payload ) in ( ctxDispatch ) to the quantity 
+recorded by the onClick handler for the shopping cart namely ( addToCartHandler )
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 13
+=======================================================
+
+192) Go to Marxx folder
+193) git add .
+194) git commit -m "Finish Add to Cart Functionality"
+195) git push origin main

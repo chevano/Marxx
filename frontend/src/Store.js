@@ -12,19 +12,24 @@ function reducer(state, action) {
   switch (action.type) {
     case 'CART_ADD_ITEM':
       // Update cart by adding items to cart
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          cartItems: [...state.cart.cartItems, action.payload],
-        },
-      };
+      const newItem = action.payload;
+      const existItem = state.cart.cartItems.find(
+        (item) => item._id === newItem._id
+      );
+      const cartItems = existItem
+        ? state.cart.cartItems.map((item) =>
+            item._id === existItem._id ? newItem : item
+          )
+        : [...state.cart.cartItems, newItem];
+
+      return { ...state, cart: { ...state.cart, cartItems } };
+
     default:
       return state;
   }
 }
 export function StoreProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
+  const value = { state, dispatch }; // Creates a value object with fields ( state ) and ( dispatch )
   return <Store.Provider value={value}>{props.children}</Store.Provider>;
 }
