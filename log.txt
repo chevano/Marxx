@@ -472,3 +472,26 @@ Save Changes and Push it to Github : Update log file 14
 214) git add .
 215) git commit -m "Create Cart Screen Start"
 216) git push origin main
+
+
+================================================
+Cart Screen : Finish creating Cart Screen 
+================================================
+
+217) Go to marxx/frontend/src/CartScreen.js and implement an onClick handler 
+for plus and minus buttons to increase  and decrease the quantity of an item in the shopping cart
+218) Implement an onClick handler for the remove button, to erase an item from the shopping cart
+219) Implement an onClick handler for the checkout button, which will direct the user to the checkout wizard page,
+if signed in, otherwise will direct the user to sign in then direct them to 
+the Checkout Page where they can fill in their credentials for payment
+220) Go to marxx/frontend/src/Product.js and create a disable button whenever inventory is out of stock
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 15
+=======================================================
+
+221) Go to Marxx folder
+222) git add .
+223) git commit -m "Finish creating Cart Screen"
+224) git push origin main
