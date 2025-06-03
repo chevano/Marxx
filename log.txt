@@ -495,3 +495,27 @@ Save Changes and Push it to Github : Update log file 15
 222) git add .
 223) git commit -m "Finish creating Cart Screen"
 224) git push origin main
+
+
+================================================
+Sign-in Screen : Create Sign-in Screen 
+================================================
+
+225) Go to marxx/frontend/src/screens and create a file called ( SigninScreens.js ) that will be the Signin page for all users
+226) Create a functional component namely ( SigninScreen ) and 
+inside this component create a bootstrap Container component ( <Container> ) with className ( small-container )
+227) Go to marxx/frontend/src/index.css and add styling to the className ( small-container )
+228) Go to marxx/frontend/src/screens/SigninScreen.js and use a bootstrap form component ( <Form> )
+to add Email and Password authentication, along with a sign in button
+229) Go to marxx/frontend/src/App.js and create a route for the signing page using the route component ( <Route> )
+setting the signin route to ( "/cart/signin")
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 16
+=======================================================
+
+230) Go to Marxx folder
+231) git add .
+232) git commit -m "Create Sign-in Screen"
+233) git push origin main

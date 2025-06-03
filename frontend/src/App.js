@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
 import Nav from 'react-bootstrap/Nav';
 import { Store } from './Store';
 import { useContext } from 'react';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
   const { state } = useContext(Store);
@@ -39,7 +40,9 @@ function App() {
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:name" element={<ProductScreen />} />
+
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/cart/signin" element={<SigninScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
