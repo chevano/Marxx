@@ -519,3 +519,51 @@ Save Changes and Push it to Github : Update log file 16
 231) git add .
 232) git commit -m "Create Sign-in Screen"
 233) git push origin main
+
+
+=======================================================
+Database : Connect to MongoDB using mongoose
+=======================================================
+
+234) Go to MongoDB website at mongodb.com and log in
+235) Create an atlas MongoDB Database by creating a cluster.
+236) Click on ( Clusters ) found on the top left-hand side of the screen 
+237) Then click ( Browse Collections )
+238) Click ( Create Database ) and set Database name to ( marxx ) and Collection name to ( marxx-collection )
+239) Click on Clusters and then Connect and then a pop up screen will appear
+240) The pop screen reads Connect to your application and has various options, click on Drivers
+241) Set Driver to ( Node.js ) and click on the recommended version
+242) Copy the connection string in the application, it starts with mongodb+srv:
+243) Go to marxx/backend and create an environment variable file name ( .env ) and place the connection string in a variable namely MONGODB_URI
+244) In the connection string add the credentials for ( db_username ) and ( db_password )
+245) Go to marxx/.gitignore and add the .env file to hide its content
+246) Go back to mongodb.com and under SECURITY click on Database Access and select ( + ADD NEW DATABASE USER )
+247) Enter a username and password for Password Authentication and use it in the connection string 
+248) Set Built-in Role to Read and write to any database and select add user
+249) Use the mongoose package to connect mongodb by going to mongoosejs.com and read the docs
+250) Go to marxx/backend and run the command npm install mongoose
+251) Install dotenv package to load env files in the app by running npm install dotenv in the same directory as mongoose
+252) Go to marxx/backend/server.js and include the imports for mongoose and dotenv, namely ( import mongoose from 'mongoose' and import dotenv from 'dotenv' )
+253) Connect to mongodb as displayed in the mongoose docs
+253a) 
+
+dotenv.config();
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('connected to db');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 17
+=======================================================
+
+254) Go to Marxx folder
+255) git add .
+256) git commit -m "Connect to MongoDB using mongoose"
+257) git push origin main
