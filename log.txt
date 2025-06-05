@@ -626,3 +626,47 @@ Save Changes and Push it to Github : Update log file 19
 281) git add .
 282) git commit -m "Create User Model and generate sample data"
 283) git push origin main
+
+
+=============================================================
+Sign-in Screen : Create the Backend API for the Sign-in Page 
+=============================================================
+
+284) Go to marxx/backend/routes and create a route for all users namely ( userRoutes.js )
+285) Go to marxx/backend/routes/userRoutes.js and create a post method with endpoint ( '/signin' ) 
+to store all the newly created data retrieved from the frontend onto the backend. In addition wrap
+the callback function inside the post method with an ( expressAsyncHandler ) function 
+to store all the errors if any occurs inside the callback function. 
+286) Go to marxx/backend and run the command ( npm install express-async-handler ) to include the error handling package ( expressAsyncHandler )
+287) Go to marxx/backend/server.js and simplify the error received in the expressAsyncHandler function as follows:
+( import express from 'express'; const app = express(); app.use( (err, req, res, next) => { res.status(500).send({ message: err.message }) });
+(288) Go to marxx/backend and run the command ( npm install jsonwebtoken ) to install json web token package to authenticate the data being transmitted
+(289) Inside marxx/backend create a file called ( utils.js ) that will store all the utility functions used on the backend
+(290) Go to marxx/backend/utils.js and create a function called ( generateToken ) that will use json web token ( jwt ) signature to sign the data being transmitted for secure transmission
+which will be used later for authentication and authorization.
+(291) Go to marxx/backend/.env and create an environment variable to be used as a secret key to sign the json web token namely ( JWT_SECRET ) and assign it a value
+(292) Go to marxx/backend/server.js and make a call to the use method and pass the user route endpoint as well as userRouter
+(293) Inside server.js, write the following to ensure json web token works:
+( import express from 'express';  const app = express();  app.use(express.json());  app.use(express.urlencoded({ extended: true })); )
+(294) Download REST Client from google chrome store to test the endpoints in the user routes or Postman. In this app I used REST client from the chrome store.
+(295) Set method to POST, set the endpoint to ( localhost:5000/api/users/signin ),
+Look inside Headers and ensure the following are set accordingly: 
+Name is set to Content-Type, and Value is set to application/json; charset=utf-8
+Inside the body create an object with the sign in credentials of email and password and check the response object below
+Sample Data for the body to test the above endpoint:
+{
+  "email":"chevanogordon@gmail.com"
+  "password": "12345678"
+}
+(296) Remember to turn on the backend server in terminal using the following command: ( npm start )
+(297) Endpoint works!
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 20
+=======================================================
+
+298) Go to Marxx folder
+299) git add .
+300) git commit -m "Create the Backend API for the Sign-in Page"
+301) git push origin main
