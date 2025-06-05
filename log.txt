@@ -602,3 +602,27 @@ Save Changes and Push it to Github : Update log file 18
 270) git add .
 271) git commit -m "Create Product Model and generate sample data"
 272) git push origin main
+
+
+=========================================================
+Database : Create User Model and generate sample data
+=========================================================
+
+273) Go to marxx/backend/models and create a file to store the User Model called ( userModel.js )
+274) Go to marxx/backend/models/userModel.js and create a user schema then create a user model called ( User )
+275) Go to marxx/backend/routes/seedRoutes.js and seed the User model with the data from data.js in the backend
+276) Go to marxx/backend/data.js and create sample data for two users, where one is an admin and the other isn't
+277) Go to marxx and run the command ( npm i bcryptjs ) to install the bcrypt package, 
+which has a brcypt method which is a hashing function primarily used for password storage
+278) Go to localhost:5000/api/seed to seed the user data in mongodb database
+279) Check mongodb to see if the user table was created, if not drop the table from mongodb and re-seed the database over again
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 19
+=======================================================
+
+280) Go to Marxx folder
+281) git add .
+282) git commit -m "Create User Model and generate sample data"
+283) git push origin main
