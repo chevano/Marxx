@@ -567,3 +567,38 @@ Save Changes and Push it to Github : Update log file 17
 255) git add .
 256) git commit -m "Connect to MongoDB using mongoose"
 257) git push origin main
+
+
+=========================================================
+Database : Create Product Model and generate sample data
+=========================================================
+
+258) Go to marxx/backend and create a folder to hold all the database models
+259) Go to marxx/backend/models and create a file to store the Product 
+Model and name it ( productModel.js )
+260) Inside marxx/backend/models/productModel create a Database Schema to describe
+how the data is being stored and then create a model from the schema using mongoose docs
+(261) Go to marxx/backend and create a folder to store all the api routes namely ( routes )
+(262) Go to marxx/backend/routes and create a file to seed the database namely ( seedRoutes.js )
+(263) Inside marxx/backend/routes/seedRoutes.js, create an express Router that will send a get request to the frontend 
+with an array of product models whenever the user go to the homepage
+(264) Go to marxx/backend/server.js and make a call to the seed api created above namely (seedRouter)
+(265) Go to marxx/backend/data.js and remove the ( _id ) field from each object inside the product array
+because mongodb will automatically generate an ( _id ) field to categorize each object
+(266) Go to localhost:5000/api/seed to seed the mongodb database
+(267) Go to marxx/backend/routes and create a file called ( productRoutes.js ) that will hold all the routes that 
+perform the CRUD Operations: create, read, update, and delete on the product
+(268) Go to marxx/backend/server.js and replace all the GET request with the appropriate route handlers, by calling the 
+use() method and passing the endpoint and route handler to it. in this case
+remove ( app.get('/api/products', (req, res) => { res.send(data.products); }); ) and replace it with ( app.use('/api/products, productRouter') )
+
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 18
+=======================================================
+
+269) Go to Marxx folder
+270) git add .
+271) git commit -m "Create Product Model and generate sample data"
+272) git push origin main

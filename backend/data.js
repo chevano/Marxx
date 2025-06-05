@@ -1,7 +1,7 @@
 const data = {
   products: [
     {
-      _id: '1',
+      // _id: '1',
       name: 'Polo Slim Shirt',
       category: 'Shirt',
       image: '/images/p1.png',
@@ -15,7 +15,7 @@ const data = {
     },
 
     {
-      _id: '2',
+      // _id: '2',
       name: 'Aloha Shirt',
       category: 'Shirt',
       image: '/images/p2.png',
@@ -29,7 +29,7 @@ const data = {
     },
 
     {
-      _id: '3',
+      // _id: '3',
       name: 'Baseball Shirt',
       category: 'Shirt',
       image: '/images/p3.png',
@@ -43,7 +43,7 @@ const data = {
     },
 
     {
-      _id: '4',
+      // _id: '4',
       name: 'Camp Shirt',
       category: 'Shirt',
       image: '/images/p4.png',
@@ -57,7 +57,7 @@ const data = {
     },
 
     {
-      _id: '5',
+      // _id: '5',
       name: 'Flannel(Plaid) Shirt',
       category: 'Shirt',
       image: '/images/p5.png',
@@ -71,7 +71,7 @@ const data = {
     },
 
     {
-      _id: '6',
+      // _id: '6',
       name: 'Adidas Fit Pants',
       category: 'Pants',
       image: '/images/p6.png',
@@ -84,7 +84,7 @@ const data = {
     },
 
     {
-      _id: '7',
+      // _id: '7',
       name: 'Polo Fit Pants',
       category: 'Pants',
       image: '/images/p7.png',
@@ -97,7 +97,7 @@ const data = {
     },
 
     {
-      _id: '8',
+      // _id: '8',
       name: 'Balenciaga Speed 2.0',
       category: 'Shoes',
       image: '/images/p8.png',
@@ -111,7 +111,7 @@ const data = {
     },
 
     {
-      _id: '9',
+      // _id: '9',
       name: 'Balenciaga(dark rubber exterior)',
       category: 'Shoes',
       image: '/images/p9.png',
@@ -125,7 +125,7 @@ const data = {
     },
 
     {
-      _id: '10',
+      // _id: '10',
       name: 'Nike Sporting Shoes',
       category: 'Shoes',
       image: '/images/p10.png',
@@ -138,7 +138,7 @@ const data = {
     },
 
     {
-      _id: '11',
+      // _id: '11',
       name: 'Nike Running Shoes',
       category: 'Shoes',
       image: '/images/p11.png',
@@ -151,7 +151,7 @@ const data = {
     },
 
     {
-      _id: '12',
+      // _id: '12',
       name: 'Nike Light-up Shoes',
       category: 'Shoes',
       image: '/images/p12.png',
@@ -164,7 +164,7 @@ const data = {
     },
 
     {
-      _id: '13',
+      // _id: '13',
       name: 'Walabee Clarks',
       category: 'Shoes',
       image: '/images/p13.png',
@@ -177,7 +177,7 @@ const data = {
     },
 
     {
-      _id: '14',
+      // _id: '14',
       name: 'Dessert Clarks',
       category: 'Shoes',
       image: '/images/p14.png',
@@ -190,7 +190,7 @@ const data = {
     },
 
     {
-      _id: '15',
+      // _id: '15',
       name: 'Light blue denim jeans',
       category: 'Pants',
       image: '/images/p15.png',
@@ -203,7 +203,7 @@ const data = {
     },
 
     {
-      _id: '16',
+      // _id: '16',
       name: 'Spotted denim jeans',
       category: 'Pants',
       image: '/images/p16.png',
@@ -216,7 +216,7 @@ const data = {
     },
 
     {
-      _id: '17',
+      // _id: '17',
       name: 'Sata School bag',
       category: 'Bags',
       image: '/images/p17.png',
@@ -229,7 +229,7 @@ const data = {
     },
 
     {
-      _id: '18',
+      // _id: '18',
       name: 'Half and Half Denim Pants',
       category: 'Pants',
       image: '/images/p18.png',
@@ -242,7 +242,7 @@ const data = {
     },
 
     {
-      _id: '19',
+      // _id: '19',
       name: 'Seductive Denim Pants',
       category: 'Pants',
       image: '/images/p19.png',
@@ -255,7 +255,7 @@ const data = {
     },
 
     {
-      _id: '20',
+      // _id: '20',
       name: 'Michael Kors leather hand bag',
       category: 'Bags',
       image: '/images/p20.png',
