@@ -578,17 +578,17 @@ Database : Create Product Model and generate sample data
 Model and name it ( productModel.js )
 260) Inside marxx/backend/models/productModel create a Database Schema to describe
 how the data is being stored and then create a model from the schema using mongoose docs
-(261) Go to marxx/backend and create a folder to store all the api routes namely ( routes )
-(262) Go to marxx/backend/routes and create a file to seed the database namely ( seedRoutes.js )
-(263) Inside marxx/backend/routes/seedRoutes.js, create an express Router that will send a get request to the frontend 
+261) Go to marxx/backend and create a folder to store all the api routes namely ( routes )
+262) Go to marxx/backend/routes and create a file to seed the database namely ( seedRoutes.js )
+263) Inside marxx/backend/routes/seedRoutes.js, create an express Router that will send a get request to the frontend 
 with an array of product models whenever the user go to the homepage
-(264) Go to marxx/backend/server.js and make a call to the seed api created above namely (seedRouter)
-(265) Go to marxx/backend/data.js and remove the ( _id ) field from each object inside the product array
+264) Go to marxx/backend/server.js and make a call to the seed api created above namely (seedRouter)
+265) Go to marxx/backend/data.js and remove the ( _id ) field from each object inside the product array
 because mongodb will automatically generate an ( _id ) field to categorize each object
-(266) Go to localhost:5000/api/seed to seed the mongodb database
-(267) Go to marxx/backend/routes and create a file called ( productRoutes.js ) that will hold all the routes that 
+266) Go to localhost:5000/api/seed to seed the mongodb database
+267) Go to marxx/backend/routes and create a file called ( productRoutes.js ) that will hold all the routes that 
 perform the CRUD Operations: create, read, update, and delete on the product
-(268) Go to marxx/backend/server.js and replace all the GET request with the appropriate route handlers, by calling the 
+268) Go to marxx/backend/server.js and replace all the GET request with the appropriate route handlers, by calling the 
 use() method and passing the endpoint and route handler to it. in this case
 remove ( app.get('/api/products', (req, res) => { res.send(data.products); }); ) and replace it with ( app.use('/api/products, productRouter') )
 
@@ -640,16 +640,16 @@ to store all the errors if any occurs inside the callback function.
 286) Go to marxx/backend and run the command ( npm install express-async-handler ) to include the error handling package ( expressAsyncHandler )
 287) Go to marxx/backend/server.js and simplify the error received in the expressAsyncHandler function as follows:
 ( import express from 'express'; const app = express(); app.use( (err, req, res, next) => { res.status(500).send({ message: err.message }) });
-(288) Go to marxx/backend and run the command ( npm install jsonwebtoken ) to install json web token package to authenticate the data being transmitted
-(289) Inside marxx/backend create a file called ( utils.js ) that will store all the utility functions used on the backend
-(290) Go to marxx/backend/utils.js and create a function called ( generateToken ) that will use json web token ( jwt ) signature to sign the data being transmitted for secure transmission
+288) Go to marxx/backend and run the command ( npm install jsonwebtoken ) to install json web token package to authenticate the data being transmitted
+289) Inside marxx/backend create a file called ( utils.js ) that will store all the utility functions used on the backend
+290) Go to marxx/backend/utils.js and create a function called ( generateToken ) that will use json web token ( jwt ) signature to sign the data being transmitted for secure transmission
 which will be used later for authentication and authorization.
-(291) Go to marxx/backend/.env and create an environment variable to be used as a secret key to sign the json web token namely ( JWT_SECRET ) and assign it a value
-(292) Go to marxx/backend/server.js and make a call to the use method and pass the user route endpoint as well as userRouter
-(293) Inside server.js, write the following to ensure json web token works:
+291) Go to marxx/backend/.env and create an environment variable to be used as a secret key to sign the json web token namely ( JWT_SECRET ) and assign it a value
+292) Go to marxx/backend/server.js and make a call to the use method and pass the user route endpoint as well as userRouter
+293) Inside server.js, write the following to ensure json web token works:
 ( import express from 'express';  const app = express();  app.use(express.json());  app.use(express.urlencoded({ extended: true })); )
-(294) Download REST Client from google chrome store to test the endpoints in the user routes or Postman. In this app I used REST client from the chrome store.
-(295) Set method to POST, set the endpoint to ( localhost:5000/api/users/signin ),
+294) Download REST Client from google chrome store to test the endpoints in the user routes or Postman. In this app I used REST client from the chrome store.
+295) Set method to POST, set the endpoint to ( localhost:5000/api/users/signin ),
 Look inside Headers and ensure the following are set accordingly: 
 Name is set to Content-Type, and Value is set to application/json; charset=utf-8
 Inside the body create an object with the sign in credentials of email and password and check the response object below
@@ -658,8 +658,8 @@ Sample Data for the body to test the above endpoint:
   "email":"chevanogordon@gmail.com"
   "password": "12345678"
 }
-(296) Remember to turn on the backend server in terminal using the following command: ( npm start )
-(297) Endpoint works!
+296) Remember to turn on the backend server in terminal using the following command: ( npm start )
+297) Endpoint works!
 
 
 =======================================================
@@ -670,3 +670,43 @@ Save Changes and Push it to Github : Update log file 20
 299) git add .
 300) git commit -m "Create the Backend API for the Sign-in Page"
 301) git push origin main
+
+
+=========================================
+Sign-in Screen : Complete Sign-in Screen 
+=========================================
+
+302) Go to marxx/frontend/src/screens/SigninScreen.js and add an ( OnSubmit ) attribute 
+to the bootstrap Form component ( <Form> ) along with its corresponding handler namely ( submitHandler ) 
+to submit the data that is being received on the frontend onto the backend
+303) Inside SigninScreens.js add two useState hooks to retrieve the email and password from the user in the form.
+304) Add an ( onChange ) attribute to ( <Form.Control> ) to retrieve the email and password from the user,
+along with its corresponding function to set the onChange attribute
+305) Make a Call to ( useContext(Store) ) to share the data that is being recieved from the form, across the component tree
+then make another call to the ( dispatch ) function, which is re-named to ctxDispatch and pass the required type and payload
+306) Go to marxx/frontend/src/Store.js to define the type and payload inside the dispatch function
+307) Go to marxx/frontend/src/screens/SigninScreens.js and make a call to localStorage function to save the user info that is
+being submitted through the form in the browser so you can use it again when trying to log in
+308) In SigninScreens.js, redirect users to the redirect variable created earlier by using the useNavigate hook
+309) Test to see if you get redirect to shipping page and successfully signed in and whether
+you get an alert with an incorrect credential log in
+310) Works!
+311) Go to marxx/frontend/src/App.js to display the user's name whenever they are log in
+312) Inside App.js create a drop down menu that shows the option of a profile page and an order history page along with a signout link button
+313) Make a call to the useContext() hook to share the signout data across the component tree and make a call to ctxDispatch to trigger useContext
+314) Go to marxx/frontend/src/Store.js and define the use case for signing out
+315) Go to marxx/frontend/src/App.js and make a call to localStorage.removeItem() function 
+to remove the user credentials from the browser whenever the user is logged out
+316) Go to marxx/frontend/src/Store.js and add ( userInfo ) which is the user sign in credentials in the ( initialState ) variable
+317) Go to marxx/frontend/src/screens/SigninScreen.js and add a useEffect hook to redirect the user from the sign-in when already logged-in to the ( redirect ) variable
+318) Go to marxx/frontend and run the following command ( npm i react-toastify ), where toastify is a library use to display temporary, unobstrusive notifications.
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 21
+=======================================================
+
+319) Go to Marxx folder
+320) git add .
+321) git commit -m "Complete Sign-in Screen "
+322) git push origin main
