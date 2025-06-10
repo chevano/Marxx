@@ -726,7 +726,7 @@ e) Create a handler called (submitHandler) for the Form onSubmit attribute
 f) Create a useState hook called ( fullName, address, city, postalCode, country ) 
 to store the Full Name, Address, City, Postal Code and Country of the user
 g) Populate the Form.Control value field with ( fullName, address, city, postal code, and country ),
-and set onChange field with a the ( fullName, address, city, postal code, and country ) useState setter function
+and set onChange field with the appropriate useState setter function for ( fullName, address, city, postal code, and country )
 h) Add a bootstrap primary button 
 325) Go to marxx/frontend/src/App.js and create a route for the shippingAddressScreen Page namely ( /shipping )
 326) Go to marxx/frontend/src/screens/ShippingAddressScreen.js and dispatch an action with type ( SAVE_SHIPPING_ADDRESS )
@@ -755,7 +755,41 @@ step4, is when the user is in the Place an Order Phase
 Save Changes and Push it to Github : Update log file 22
 =======================================================
 
-319) Go to Marxx folder
-320) git add .
-321) git commit -m "Create Shipping Screen"
-322) git push origin main
+337) Go to Marxx folder
+338) git add .
+339) git commit -m "Create Shipping Screen"
+340) git push origin main
+
+
+=======================================================
+Checkout Wizard : Create Sign-Up Screen
+=======================================================
+
+341) Go to marxx/frontend/src/screens and create a file called SignupScreen.js
+342) Inside SigninScreen.js create a functional component with 4 useState hooks,
+name, email, password, confirmPassword to retrieve these inputs from the user
+343) Create a div with className container small-container respectively to endclosed all the data
+344) Create an h1 element with text Sign Up
+345) Create a bootstrap Form component to collect and send over the data from the frontend to the backend
+346) Create a handler called (submitHandler) for the Form onSubmit attribute
+347) Populate the Form.Control type field with the correct input type for each field,
+and set onChange field with the appropriate useState setter function for ( fullName, address, city, postal code, and country )
+348) Add a bootstrap primary button 
+349) Go to marxx/backend/routes/userRoutes.js and add a user router for the ( /signup ) endpoint using a POST method
+350) Go to marxx/frontend/src/App.js and create a route for the SignupScreen Page namely ( /signup )
+351) Go to marxx/frontend/src/screens/SignupScreen.js and dispatch an action with type ( USER_SIGNIN )
+and set the payload to the data that was received from the the form through a ajax request using a POST method
+In addition, store these hooks in the localStorage ( browser ) with key ( userInfo ) then navigate to the ( redirect ) variable,
+which keeps track of where the user is and where they wanted to go.
+352) Ensure the user gets redirected to the home page after signing up with the help of the useEffect hook and the redirect variable
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 23
+=======================================================
+
+353) Go to Marxx folder
+354) git add .
+355) git commit -m "Create Sign-Up Screen"
+356) git push origin main
+
