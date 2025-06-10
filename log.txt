@@ -708,5 +708,54 @@ Save Changes and Push it to Github : Update log file 21
 
 319) Go to Marxx folder
 320) git add .
-321) git commit -m "Complete Sign-in Screen "
+321) git commit -m "Complete Sign-in Screen"
+322) git push origin main
+
+
+=======================================================
+Checkout Wizard : Create Shipping Screen
+=======================================================
+
+323) Go to marxx/frontend/src/screens and create a file called ( ShippingAddressScreen.js ) which will be used as the Shipping Address Page
+324) Inside ShippingAddressScreen.js create a functional component called ( ShippingAddressScreen() ), which is the Shipping Page UI that does the following:
+a) Create a div with className container small-container respectively to endclosed all the data
+b) Create an h1 element with text Shipping Adddress
+c) Create a Form to send the data receive on the frontend to the backend
+d) The fields of the form are ( Full Name, Address, City, Postal Code, Country )
+e) Create a handler called (submitHandler) for the Form onSubmit attribute
+f) Create a useState hook called ( fullName, address, city, postalCode, country ) 
+to store the Full Name, Address, City, Postal Code and Country of the user
+g) Populate the Form.Control value field with ( fullName, address, city, postal code, and country ),
+and set onChange field with a the ( fullName, address, city, postal code, and country ) useState setter function
+h) Add a bootstrap primary button 
+325) Go to marxx/frontend/src/App.js and create a route for the shippingAddressScreen Page namely ( /shipping )
+326) Go to marxx/frontend/src/screens/ShippingAddressScreen.js and dispatch an action with type ( SAVE_SHIPPING_ADDRESS )
+and set the payload to the useState hooks ( fullName, addresss, city, postalCode, and country).
+In addition, store these hooks in the localStorage ( browser ) with key ( shippingAddress ) then go to the Payment Page using ( navigate("/paymnet") )
+327) Go to marxx/frontend/src/Store.js and define the action behavior for the dispatch function type ( SAVE_SHIPPING_ADDRESS )
+328) Go to marxx/frontend/src/screens/ShippingAddressScreen.js and destruct the shippingAddress object from the cart object which is inside the state object of the useContext hook
+329) Populate the useState fields with the data from the shippingAddress object inside the state object
+330) Use the useEffect hook to ensure that only users that are log-in can see the shipping page
+331) Go to marxx/frontend/src/App.js and remove the data from the browser whenever the user sign-out, using localStorage.removeItem function in side the signoutHandler
+332) Go to marxx/frontend/src/Store.js and under dispatch type "USER_SIGNOUT", set cartItems to an empty array, and shippingAddress to an empty object inside the cart object
+333) Go to marxx/frontend/src/components and create a file called ( CheckoutStep.js ) which is a UI that will be used in the Checkout Wizard process to let a user know where they in the Check out process
+334) Create a bootstrap row container ( <Row> ) with className ( checkout-steps ) to enclose all the data
+Inside ( <Row> ) create 4 bootstrap col container ( <Col> ) and set the className to active depending on whether the user is in step1, step2, step3, or step4,
+where step1 through step4 is retrieve from props. 
+For clarity; 
+step1 signifies that the user is in the Sign-In Phase
+step2, is when the user is in the Shipping Phase
+step3, is when the user is in the Payment Phase
+step4, is when the user is in the Place an Order Phase
+335) Go to marxx/frontend/src/index.css and add the styling for the className ( checkout-steps )
+336) Go to marxx/frontend/src/screens/SigninScreen.js and marxx/frontend/src/screens/ShippingAddressScreen.js and include the CheckoutSteps component
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 22
+=======================================================
+
+319) Go to Marxx folder
+320) git add .
+321) git commit -m "Create Shipping Screen"
 322) git push origin main
