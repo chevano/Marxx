@@ -768,7 +768,7 @@ Checkout Wizard : Create Sign-Up Screen
 341) Go to marxx/frontend/src/screens and create a file called SignupScreen.js
 342) Inside SigninScreen.js create a functional component with 4 useState hooks,
 name, email, password, confirmPassword to retrieve these inputs from the user
-343) Create a div with className container small-container respectively to endclosed all the data
+343) Create a bootstrap container component ( <Container> ) with className small-container to endclosed all the data
 344) Create an h1 element with text Sign Up
 345) Create a bootstrap Form component to collect and send over the data from the frontend to the backend
 346) Create a handler called (submitHandler) for the Form onSubmit attribute
@@ -793,3 +793,60 @@ Save Changes and Push it to Github : Update log file 23
 355) git commit -m "Create Sign-Up Screen"
 356) git push origin main
 
+
+=======================================================
+Checkout Wizard : Create Select Payment Method Screen
+=======================================================
+
+357) Go to marxx/frontend/src/screens and create a file called ( PaymentMethodScreen.js ) that holds the UI for selecting a payment method,
+for this project the two options will be stripe and paypal.
+358) Inside PaymentMethodScreen.js, create a functional component as follows:
+359) Create a div element to enclose all the data
+360) Inside the div element do as follows:
+361) Make a call to CheckoutSteps component inside ( marxx/frontend/src/components/CheckoutSteps.js ) and pass steps1 step2 steps3 as props
+362) Create a bootstrap container component ( <Container> ) with className small-container to hold the remaining UI code and inside ( <Container> ) do the following:
+363) Create an h1 element with text Payment Method
+364) Create a bootstrap Form component to collect and send over the data from the frontend to the backend
+365) Create a handler called (submitHandler) for the Form onSubmit attribute
+366) Create a div with a bootstrap margin bottom with a size value of 3 ( mb-3 )
+367) Inside the div element create a bootstrap Form.Check component ( <Form.Check> ) which will be used to create radio buttons, where a user gets the options of selecting a PayPal or Stripe radio button for payment
+368) Create the first radio button as follows: 
+369) Set ( <Form.Check> ) type to radio to signify that it's a radio button
+370) Set ( id, label and value ) to PayPal
+371) Set checked to a boolean, where the user selection is compare to the string PayPal to check if the user select the ( paypal ) radio button
+372) Set onChange to a method namely setPaymentMethod that sets the payment method useState setter function hook with the value entered by the user when they select a radio button
+373) Create a div with a bootstrap margin bottom with a size value of 3 ( mb-3 )
+374) Inside the div element create a bootstrap Form.Check component ( <Form.Check> ) which will be used to create radio buttons, where a user gets the options of selecting a PayPal or Stripe radio button for payment
+375) Create the second radio button as follows: 
+376) Set ( <Form.Check> ) type to radio to signify that it's a radio button
+377) Set ( id, label and value ) to Stripe
+378) Set checked to a boolean, where the user selection is compare to the string Stripe to check if the user select the ( stripe ) radio button
+379) Set onChange to a method namely setPaymentMethod that sets the payment method useState setter function hook with the value entered by the user when they select a radio button
+380) Create a bootstrap button of type submit, that reads ( Continue )
+381) Create a div element with a bootstrap margin bottom with a size value of 3 ( mb-3 )
+382) Import the bootstrap button component ( <Button> ) as follows: import Button from ( 'react-bootstrap/Button' )
+383) Make a call to useContext(Store) hook so that you can have access to the state object and the dispatch function
+384) Import Store and the useContext hook
+385) Deconstruct ( shippingAddress, and paymentMethod ) from cart and deconstruct cart from state
+386) Make a call to the ( useEffect() ) hook to redirect the user to the previous page ( '/shipping' ) if the user did not enter the shipping address info
+387) Import the useEffect hook and useNavigate, where useNavigate is use to redirect a user to another page, in this case ( '/shipping' )
+388) Create a react useState hook to collect and set the payment method selection, namely ( paymentMethodName, setPaymentMethod )
+389) Import useState from react
+390) Dispatch an action of type ("SAVE_PAYMENT_METHOD") with a payload of ( paymentMethodName )
+391) Set the selected Payment Method in the browser using ( localStorage.setItem() ) with key ( 'paymentMethod' )
+392) Redirect user to the next step of placing an order with route ( navigate('/placeorder') )
+393) Go to marxx/frontend/src/Store.js and define the case for "SAVE_PAYMENT_METHOD"
+394) Go to marxx/frontend/src/App.js and create a route for payment ( '/payment' ) and render the Payment Method Screen ( <PaymentMethodScreen/> )
+395) Inside App.js, make a call to localStorage.removeItem with key ( 'paymentMethod' ) to erase the payment history from the browser whenever the user sign-out
+396) Go to marxx/frontend/src/Store.js and inside the case ( 'USER_SIGNOUT' ) add a field called paymentMethod and set it to an empty string
+and retrieve the payment method history from the browser using localStorage.getItem() with key ( 'paymentMethod' ) inside ( initialState )
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 24
+=======================================================
+
+397) Go to Marxx folder
+398) git add .
+399) git commit -m "Create Select Payment Method Screen"
+400) git push origin main
