@@ -850,3 +850,43 @@ Save Changes and Push it to Github : Update log file 24
 398) git add .
 399) git commit -m "Create Select Payment Method Screen"
 400) git push origin main
+
+
+=======================================================
+Checkout Wizard : Place Order Screen
+=======================================================
+
+401) Go to marxx/frontend/src/screens and create a file called PlaceOrderScreen.js, which is a UI that displays the items in the cart, payment and address history
+402) Create a react functional component
+403) Create a CheckoutSteps component with props step1 step2 step3 step4
+404) Create a h1 element and set the className to bootstrap margin top and bottom of size 3 ( 'my-3' ) and set the h1 element content to ( Preview Order )
+405) Create a bootstrap Row component ( <Row> ) and inside create a bootstrap Col component ( <Col> ) of size 8 out of 12 units on medium screens and
+inside create a bootstrap card component ( <Card> ) with className set to ( "mb-3" ) with the following characteristics:
+a) Set ( <Card.Title> ) to Shipping
+b) Set ( <Card.Text> ) to the name of the buyer as well as their address
+406) Create a Link component ( <Link> ) to edit the shipping address info at ( '/shipping' )
+407) Import Row, Col, Card, Button, ListGroup from react bootstrap
+408) Make a call to useContext(Store) hook to get access to ( state ) object and dispatch function ( ctxDispatch )
+409) Deconstruct cart, and userInfo from ( state )
+410) Import ( Store ), ( useContext() ) hook, ( Link ) and ( useNavigate() ) hook
+411) Go to marxx/frontend/src/App.js and add a route called ( '/placeorder' ) and render the place order screen ( PlaceOrderScreen )
+412) Go to marxx/frontend/src/PlaceOrderScreen.js and add a bootstrap Card component to display the payment.
+413) Add a Link component to redirect the user to the payment screen, namely Edit
+414) Create another Card component to display the items in the cart
+415) Create a Bootstrap Col component with medium screen set to the remaining 4 out of 12 units.
+416) Inside Create a Bootstrap Card Component and display the Order Summary, which includes the 
+item price, shipping price, tax price and the total price.
+417) Create Bootstrap button with an onClick handler namely ( placeOrderHandler )
+418) Make a call to the useEffect hook while checking whether the user fill out the payment method screen and 
+if not redirect the user to the payment screen using ( navigate('/payment') )
+419) Calculate item price, shipping price, tax price and the total price.
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 25
+=======================================================
+
+420) Go to Marxx folder
+421) git add .
+422) git commit -m "Place Order Screen"
+423) git push origin main

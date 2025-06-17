@@ -32,7 +32,7 @@ export default function PaymentMethodScreen() {
 
   return (
     <div>
-      <CheckoutSteps>steps1 steps2 steps3</CheckoutSteps>
+      <CheckoutSteps step1 step2 step3 />
       <Container className="small-container my-3">
         <h1 className="my-3">Payment Method</h1>
         <Form onSubmit={submitHandler}>
