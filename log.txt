@@ -890,3 +890,47 @@ Save Changes and Push it to Github : Update log file 25
 421) git add .
 422) git commit -m "Place Order Screen"
 423) git push origin main
+
+
+==============================================================================
+Checkout Wizard : Implement Place Order Action, Order Schema, and Order Route 
+==============================================================================
+
+424) Go to marxx/frontend/src/screens/PlaceOrderScreen.js and make a call to useReducer() hook
+with props ( reducer, loading ), where loading is set to a default value of false
+and deconstruct ( loading ) variable as well as the ( dispatch ) function
+425) Define the reducer such that it accounts for the following cases:
+a) Case ( "CREATE_REQUEST"), in this case update the ( loading ) variable to true
+b) Case ( "CREATE_SUCCESS"), in this case update the ( loading ) variable to false
+c) Case ( "CREATE_FAIL" ), in this case update the ( loading ) variable to false
+426) Create a try, catch block inside ( placeOrderHandler ) and in the try block make a call to the dispatch function, dispatching an action type of ( 'CREATE_REQUEST' )
+in addition, make a ajax POST request from the frontend end to the backend with endpoint ( '/api/orders' ) with the following fields set, 
+( orderItems, shippingAddress, paymentMethod, itemPrice, shippingPrice, taxPrice, and totalPrice )
+and inside headers, set authorization to Bearer and the user-login token
+and in the catch block, catch the error object and make a call to the ( dispatch ) function 
+with action type ( 'CREATE_FAIL' ) and display an error message using toast.error and the utility function ( getError )
+427) Import ( getError ) from 'utils', and Import ( toast ) from 'react-toastify'
+428) Import ( axios ) from 'axios'
+429) Make a call to ( ctxDispatch ) of type "CART_CLEAR", to clear the items in the cart and make a call to ( dispatch ) of action type 'CREATE_SUCCES'
+430) Make a call to localStorage.removeItem('cartItems') to remove all the cartItems from the browser storage
+431) Redirect the user to the Order Details Page using navigate( '/order/${data.order._id}' );
+432) Render a ( LoadingBox ) component if the loading variable is still set to true after the place order button
+433) Import the ( LoadingBox ) component
+434) Go to marxx/frontend/src/Store.js to implment the case "CART_CLEAR", where all the items in the 
+cart is removed by setting the updating the cart state and setting cartItems to an empty array
+435) Go to marxx/backend/models and create a file called orderModle.js, which is the database schema for all the 
+items in the cart and their prices along with tax, user info, their address, and payment history
+436) Go to marxx/backend/routes and create a file called ( orderRoutes.js )
+437) Make a ajax POST request to the homppage ( '/' ) and send over the order items object, pass a function namely isAuth, that authoriza a user
+438) Go to marxx/backend/utils.js and authorize the user with the token received
+439) Go to marxx/backend/server.js and add a route for order route
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 26
+=======================================================
+
+440) Go to Marxx folder
+441) git add .
+442) git commit -m "Implement Place Order Action, Order Schema, and Order Route "
+443) git push origin main

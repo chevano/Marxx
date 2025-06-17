@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use('/api/seed', seedRouter);
 // Handles all the request Methods that has a starting endpoint of '/api/products' using productRouter
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
 
 // Handles the errors that occurs in the expressAsyncHandler function which can be found in userRoutes.js
 app.use((err, req, res, next) => {
