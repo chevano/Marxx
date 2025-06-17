@@ -934,3 +934,44 @@ Save Changes and Push it to Github : Update log file 26
 441) git add .
 442) git commit -m "Implement Place Order Action, Order Schema, and Order Route "
 443) git push origin main
+
+
+======================================
+Checkout Wizard : Create Order Screen
+======================================
+
+444) Go to marxx/frontend/screens and create a file called ( OrderScreen.js ), which will be used
+as the UI for displaying the shipping info, payment method and status, items in the cart, as well as a 
+Order Summary, which includes the price of the items, shipping, tax and total cost.
+445) Create a react functional component and do the following:
+446) Render the ( <LoadingBox> ) component if the loading variable is set to true,
+447) Display the ( <MessageBox> ) component if the error variable is set to true
+448) Otherwise render the UI for the page
+449) Make a call to useReducer and set the default value for ( loading ) to true, 
+( order ) to an empty object, and the ( error ) variable to an empty string
+450) Define a ( reducer ) function as follows:
+a) Case ( "FETCH_REQUEST" ), where the state gets updated to set ( loading ) to true, and the ( error ) variable to an empty string
+b) Case ( "FETCH_SUCCESS"), where the state gets updated to set ( loading ) to false, and ( order ) object 
+is set to the action payload and the ( error ) variable is set to an empty string
+c) Case ( "FETCH_FAIL" ), where the state gets updated to set ( loading ) to false, ( error ) to the action payload
+450) Make a call to ( useEffect() ) hook to make a request to the backend
+451) Make a call to ( useParams ) and rename id to orderId
+452) Go to marxx/frontend/src/App.js and create a route for order screen where the path is set to ( "/order/:id" ) and render the ( <OrderScreen> ) component
+453) Go to marxx/frontend/src/screens/OrderScreen.js and a create an h1 element with content set to Order
+454) Create a bootstrap Row component ( <Row> ) and inside create a bootstrap Col ( <Col> ) with medium screen size set to 8 out of 12 units
+and create a Card component to display the shipper's name, address, and when the package was delivered
+455) Create another bootstrap Card component to display payment transaction
+456) Create a third bootstrap Card component to display all the items in the shopping cart
+457) Create a fourth bootstrap Card component to display the Order Summary, which include the cost of the items in the cart including tax and shipping price
+458) Import Row, Col, ListGroup, Card, <MessageBox>, <LoadingBox>
+459) Go to marxx/backend/routes/orderRoutes.js and create a route for a GET request with endpoint ( "/:id" ) to retrieve a specific order
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 27
+=======================================================
+
+460) Go to Marxx folder
+461) git add .
+462) git commit -m "Create Order Screen"
+463) git push origin main
