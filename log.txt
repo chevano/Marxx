@@ -975,3 +975,43 @@ Save Changes and Push it to Github : Update log file 27
 461) git add .
 462) git commit -m "Create Order Screen"
 463) git push origin main
+
+
+============================================
+Checkout Wizard : Make Payment using PayPal
+============================================
+
+464) Generate Paypal Client Id
+465) Go to ( developer.paypal.com/home ) and register for a personal account, 
+where the Sandbox version is used. Switch to business account for live transaction
+466) Click on Your Name --> Dashboard 
+Click on Apps & Credentials, Type in a App Name ( Marxx ). Set Type to Merchant and Sandbox Account to Sandbox Business Account and lastly select create app
+467) Go to marxx/backend/.env and create an environment variable called ( PAYPAL_CLIENT_ID ) and paste the ( ClientId ) from ( Paypal )
+468) Go to marxx/backend/server.js and make a GET request, accessing the Paypal api using the endpoint ( "/api/keys/paypal" )
+469) Go to marxx/frontend and install the react paypal package by running the following command: ( npm install @paypal/react-paypal-js )
+470) Go to marxx/frontend/src/index.js and wrap ( <PayPalScriptProvider deferLoading={true}> ) around ( <App/> ) and import <PayPalScriptProvider> package
+as follows: import { PayPalScriptProvider } from ( '@paypal/react-paypal-js')
+471) Go to marxx/frontend/src/screens/OrderScreen.js and import ( { PayPalButtons, usePayPalScriptReducer } ) from ( "@paypal/react-paypal-js"; )
+472) Inside OrderScreen.js send an ajax GET request from the frontend to the backend to get the paypal client id by creating a method called ( loadPaypalScript )
+473) Make a call to usePayPalScriptReducer()
+474) Go into the JSX and create a conditional statment to render the paypal button whenever an order isn't paid
+475) Implement the cases for all the methods that were called on the PayPalButoons component in the reducer function as follows:
+a) Case ( "PAY_REQUEST" ), which updates the ( state ) by setting the ( loadingPay ) variable to true
+b) Case ( "PAY_SUCCESS" ), which updates the state by setting the ( loadingPay ) variable to false and the ( successPay ) variable to true
+c) Case ( "PAY_FAIL" ), which updates the state by setting the ( loadingPay ) variable to false
+d) Case ( "PAY_RESET" ), which updates the state by setting the ( loadingPay ) variable to false and the ( successPay ) variable to false 
+476) In the useReducer hook set the default value of ( successPay ) and ( loadingPay ) to false
+477) Update the if condition in the useEffect hook to run fetchOrder when successPay is set to true and add the ( successPay ) variable to the useEffect dependency list
+478) In the JSX, display the Loading Box component when the ( loadingPay ) variable is set to true
+479) Go to marxx/backend/routes/orderRoutes.js and implement a route with endpoint ( "/:id/pay" ) using a PUT method, and passing isAuth method to the function as well as expressAsyncHandler
+480) Test the sanbox version of paypal by signing-in and run a payment
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 28
+=======================================================
+
+460) Go to Marxx folder
+461) git add .
+462) git commit -m "Make Payment using PayPal"
+463) git push origin main
