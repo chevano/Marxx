@@ -1011,7 +1011,45 @@ d) Case ( "PAY_RESET" ), which updates the state by setting the ( loadingPay ) v
 Save Changes and Push it to Github : Update log file 28
 =======================================================
 
-460) Go to Marxx folder
-461) git add .
-462) git commit -m "Make Payment using PayPal"
-463) git push origin main
+481) Go to Marxx folder
+482) git add .
+483) git commit -m "Make Payment using PayPal"
+485) git push origin main
+
+
+
+==============================================
+Customer Panel : Displaying the Order History
+==============================================
+
+486) Go to marxx/frontend/src/screens and create a file called ( OrderHistoryScreen.js ),
+which will be used to display all the orders of a given user
+487) Render a reaction functional component indise ( OrderHistoryScreen.js )
+488) Create a h1 element that displays the content ( "Order History" )
+489) Create a conditional render such that if the ( loading ) variable is true, display the Loading Box component ( <LoadingBox /> ),
+if the ( error ) variable is set to true, show the Message Box component ( <MessageBox> ) and displaying the error variable to the user,
+Otherwise Dislay the order history UI
+490) Import LoadingBox component ( <LoadingBox> ), MessageBox component ( <MessageBox> ) 
+491) Create a table with columns ( ID, DATE, TOTAL, PAID, DELIVERED, ACTIONS )
+492) Make a call to the useContext(Store) hook and deconstruct the ( state ) object from it, and then deconstruct ( userInfo ) from ( state )
+493) Import the imports for ( useNavigate() ) hook, and ( useReducer() ) hook,
+where the default value of ( loading ) is set to true and ( error ) is set to an empty string
+494) Define a reducer with the following action type
+a) Case ( "FETCH_REQUEST" ), where the state gets updated such that the ( loading ) variable is set to true
+b) Case ( "FETCH_SUCCESS" ), where the state gets updated such that ( orders ) is set to the action payload and ( loading ) is set to false
+c) Case ( "FETCH_FAIL" ), where the state get updated such that ( loading ) is set to false and ( error ) is set to the action payload
+495) Make a call to the ( useEffect() ) hook, to send an ajax request from the frontend to the backend
+496) Use a map function to render all the ( orders ) in the table body ( <tbody> )
+497) Go to marxx/backend/routes/orderRoutes.js and implement the api used in the frontend in ( OrderHistoryScreen.js ) namely ( `/api/orders/mine` ) onto the backend
+498) Create the `/api/orders/mine` endpoint such that it uses the user Id, to located the orders of that particular user in the database and then send over all the overs to the frontend
+499) Go to marxx/frontend/src/App.js and add a route with path set to ( "/orderhistory" ) and render the OrderHistoryScreen component ( <OrderHistoryScreen />)
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 29
+=======================================================
+
+500) Go to Marxx folder
+501) git add .
+502) git commit -m "Displaying the Order History"
+503) git push origin main
