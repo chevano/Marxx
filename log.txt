@@ -1053,3 +1053,53 @@ Save Changes and Push it to Github : Update log file 29
 501) git add .
 502) git commit -m "Displaying the Order History"
 503) git push origin main
+
+
+==============================================
+Customer Panel : Create User Profile Screen
+==============================================
+
+504) Go to marxx/frontend/src/screens and create a file called ( ProfileScreen.js ),
+which is the UI for the User Profile Page
+505) Create a react functional component
+506) Make a call to useContext(Store) hook to get the ( state ) object and ( dispatch ) function
+507) Deconstruct ( userInfo ) from ( state )
+508) Create a h1 element with content ( User Profile )
+509) Create a bootstrap Form component to send over the data from the frontend to the backend
+510) Create a Form.Group for Name as follows:
+511) Set the Form.Label content to Name
+512) Set the Form.Control value attribite to ( name ), where name is a ( useState() ) hook
+513) Set the Form.Control onChange attribute is set to a function that calls the setter function for the usestate ( name ) hook, namely (setName)
+514) Create a Form.Group for Email as follows:
+515) Set Form.Label content to Email
+516) Set the Form.Control value attribute to ( email ), where email is a ( useState() ) hook
+517) Set the Form.Control onChange attribute to a function that calls the setter function for ( email ), this setter function is called ( setEmail )
+518) Create a Form.Group for Password as follows:
+519) Set Form.Label content to Password
+520) Set the Form.Control value attribute to ( password ), where password is a ( useState() ) hook
+521) Set the Form.Control onChange attribute to a function that calls the setter function for ( password ), this setter function is called ( setPassword )
+522) Create a Form.Group for confirmPassword as follows:
+523) Set Form.Label content to Conform Password
+524) Set the Form.Control value attribute to ( confirmPassword ), where email is a ( useState() ) hook
+525) Set the Form.Control onChange attribute to a function that calls the setter function for ( confirmPassword ), this setter function is called ( setConfirmPassword )
+526) Create the useState variables and their setter functions: ( name, setName ), ( email, setEmail ), ( password, setPassword ), and ( confirmPassword, setConfirmPassword )
+527) Create a bootstrap Button component with type set to ( "submit" ) to send over the data, where the content of the button is ( Update )
+528) Go to marxx/frontend/src/App.js and add a route for the ( ProfileScreen ) page
+529) Go to marxx/frontend/src/screens/ProfileScreen.js and implemnent submitHandler function, where submitHandler is the function invoke on the onSubmit attribite
+530) Make a call to useReducer hook and deconstruct the ( loadingUpdate ) variable and the ( dispatch ) function
+531) Define a reducer with the following action type cases
+532) Case ( "UPDATE_REQUEST" ), where the ( state ) gets updated such that the ( loadingUpdate ) variable is set to true
+533) Case ( "UPDATE_SUCCESS" ), where the ( state ) gets updated such that the ( loadingUpdate ) variable is set to false 
+534) Case ( "UPDATE_FAIL" ), where the ( state ) gets updated such that the ( loadingUpdate ) variable is set to false 
+535) Go to marxx/backend/routes/userRoutes.js to implment the api endpoint used in ( ProfileScreen.js ) namely ('/api/users/profile',)
+536) Go to marxx/frontend/src/App.js and redirect the user to the sign-in screen using ( window.location.href = '/signin )
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 30
+=======================================================
+
+537) Go to Marxx folder
+538) git add .
+539) git commit -m "Create User Profile Screen"
+540) git push origin main

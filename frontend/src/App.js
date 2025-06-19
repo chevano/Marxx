@@ -19,6 +19,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -29,6 +30,7 @@ function App() {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
   };
 
   return (
@@ -54,11 +56,11 @@ function App() {
                   </Link>
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-                      <Link to="/profile">
-                        <NavDropdown.Item>User Profile</NavDropdown.Item>
+                      <Link className="dropdown-item" to="/profile">
+                        User Profile
                       </Link>
 
-                      <Link className="dropdwon-item px-3" to="/orderhistory">
+                      <Link className="dropdown-item px-3" to="/orderhistory">
                         Order History
                       </Link>
 
@@ -94,6 +96,7 @@ function App() {
               <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>
               <Route path="/order/:id" element={<OrderScreen />} />
               <Route path="/orderhistory" element={<OrderHistoryScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
