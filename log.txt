@@ -1103,3 +1103,36 @@ Save Changes and Push it to Github : Update log file 30
 538) git add .
 539) git commit -m "Create User Profile Screen"
 540) git push origin main
+
+
+==============================================
+Render.com : Deploying the Application
+==============================================
+
+541) Go to render.com and sign up
+542) Click Web Services( New Web Service ) --> Under Connect Git provider( Github ) --> Authorize Render
+--> Chevano --> Only select repositories( chevano/Marxx ) --> install
+543) Set the fields as follows:
+a) Name to Marxx
+b) Environment to Node
+c) Branch to main
+d) Build Command to node
+e) Start Command npm start
+544) Instance Type
+For hobby projects --> Free
+545) Set the environment variables: MONGODB_URI for database access and JWT_SECRET token
+for authorization and authentication which is found in the .env file at marxx/backend/.env
+546) Under Advance option, select Secret File and set Filename to .env, 
+and File Content to the content of the .env file and then click save.
+547) Click Deploy Web Service
+548) Regenerate marxx/package.json file
+
+
+=======================================================
+Save Changes and Push it to Github : Update log file 31
+=======================================================
+
+537) Go to Marxx folder
+538) git add .
+539) git commit -m "Regenerate marxx/package.json file and Deploy App to render.com"
+540) git push origin main
