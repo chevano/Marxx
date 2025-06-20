@@ -1116,8 +1116,8 @@ Render.com : Deploying the Application
 a) Name to Marxx
 b) Environment to Node
 c) Branch to main
-d) Build Command to node
-e) Start Command npm start
+d) Build Command to ( npm install; npm run build )
+e) Start Command ( npm run start )
 544) Instance Type
 For hobby projects --> Free
 545) Set the environment variables: MONGODB_URI for database access and JWT_SECRET token

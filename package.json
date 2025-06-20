@@ -20,6 +20,7 @@
   "homepage": "https://github.com/chevano/Marxx#readme",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "express": "^5.1.0"
   }
 }
