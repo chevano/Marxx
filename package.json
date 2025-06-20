@@ -2,7 +2,6 @@
   "name": "marxx",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
     "start": "node backend/server.js",
@@ -19,5 +18,8 @@
     "url": "https://github.com/chevano/Marxx/issues"
   },
   "homepage": "https://github.com/chevano/Marxx#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
