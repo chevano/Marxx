@@ -1,7 +1,7 @@
 {
   "name": "marxx",
   "version": "1.0.0",
-  "homepage": "https://chevano.github.io/marxx",
+  "homepage": "https://chevano.github.io/Marxx",
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
