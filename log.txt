@@ -1116,14 +1116,16 @@ Github pages : Deploying the Application
 "homepage": "https://chevano.github.io/Marxx"
 Under "scripts" type the following command:
 "predeploy": "npm run build"
-"deploy": "gh-pages -d build" ==> "deploy": "gh-pages -d dist"
+"deploy": "gh-pages -d build"
 
 "homepage": "https://github.com/chevano/Marxx#readme", --> Might be relevant
+
 
 544) Save and push changes to github
 545) Go to marxx and run the following command: ( npm run deploy )
 546) Go to github.com and sign-in:
 Go to marxx/setting/pages --> and under Build and Deployment set Branch to ( none ) changes to ( gh-pages )
+Go to marxx/setting/actions/General --> Set Workflow permissions to Read and write permission then click save
 
 ===============================================================================================
 Save Changes and Push it to Github : Update log file 31 --> 32 ( Remove files for render.com )
