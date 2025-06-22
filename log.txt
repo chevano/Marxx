@@ -1109,10 +1109,10 @@ Save Changes and Push it to Github : Update log file 30
 Github pages : Deploying the Application
 ==============================================
 
-541) Go to marxx and run the following command ( npm install gh-pages --save dev )
+541) Go to marxx and run the following command ( npm install gh-pages --save-dev )
 542) Go to marxx/package.json file and type the following command below type: 
 "homepage": "https://gitname.github.io/react-gh-pages" ==>
-"homepage": "https://chevano.github.io/marxx"
+"homepage": "https://chevano.github.io/Marxx"
 Under "scripts" type the following command:
 "predeploy": "npm run build"
 "deploy": "gh-pages -d build"
