@@ -1106,33 +1106,29 @@ Save Changes and Push it to Github : Update log file 30
 
 
 ==============================================
-Render.com : Deploying the Application
+Github pages : Deploying the Application
 ==============================================
 
-541) Go to render.com and sign up
-542) Click Web Services( New Web Service ) --> Under Connect Git provider( Github ) --> Authorize Render
---> Chevano --> Only select repositories( chevano/Marxx ) --> install
-543) Set the fields as follows:
-a) Name to Marxx
-b) Environment to Node
-c) Branch to main
-d) Build Command to ( npm install; npm run build )
-e) Start Command ( npm run start )
-544) Instance Type
-For hobby projects --> Free
-545) Set the environment variables: MONGODB_URI for database access and JWT_SECRET token
-for authorization and authentication which is found in the .env file at marxx/backend/.env
-546) Under Advance option, select Secret File and set Filename to .env, 
-and File Content to the content of the .env file and then click save.
-547) Click Deploy Web Service
-548) Regenerate marxx/package.json file
+541) Go to marxx and run the following command ( npm install gh-pages --save dev )
+542) Go to marxx/package.json file and type the following command below type: 
+"homepage": "https://gitname.github.io/react-gh-pages" ==>
+"homepage": "https://chevano.github.io/marxx"
+Under "scripts" type the following command:
+"predeploy": "npm run build"
+"deploy": "gh-pages -d build"
 
+"homepage": "https://github.com/chevano/Marxx#readme", --> Might be relevant
 
-=======================================================
-Save Changes and Push it to Github : Update log file 31
-=======================================================
+543) Save and push changes to github
+544) Go to marxx and run the following command: ( npm run deploy )
+545) Go to github.com and sign-in:
+Go to marxx/setting/pages --> and under Build and Deployment set Branch to ( none ) changes to ( gh-pages )
+
+===============================================================================================
+Save Changes and Push it to Github : Update log file 31 --> 32 ( Remove files for render.com )
+===============================================================================================
 
 537) Go to Marxx folder
 538) git add .
-539) git commit -m "Regenerate marxx/package.json file and Deploy App to render.com"
+539) git commit -m "Deploy App to github"
 540) git push origin main
