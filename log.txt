@@ -1116,7 +1116,7 @@ Github pages : Deploying the Application
 "homepage": "https://chevano.github.io/Marxx"
 Under "scripts" type the following command:
 "predeploy": "npm run build"
-"deploy": "gh-pages -d build"
+"deploy": "gh-pages -d build" ==> "deploy": "gh-pages -d dist"
 
 "homepage": "https://github.com/chevano/Marxx#readme", --> Might be relevant
 
