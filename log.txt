@@ -1109,8 +1109,9 @@ Save Changes and Push it to Github : Update log file 30
 Github pages : Deploying the Application
 ==============================================
 
-541) Go to marxx and run the following command ( npm install gh-pages --save-dev )
-542) Go to marxx/package.json file and type the following command below type: 
+541) npm run build
+542) Go to marxx and run the following command ( npm install gh-pages --save-dev )
+543) Go to marxx/package.json file and type the following command below type: 
 "homepage": "https://gitname.github.io/react-gh-pages" ==>
 "homepage": "https://chevano.github.io/Marxx"
 Under "scripts" type the following command:
@@ -1119,16 +1120,16 @@ Under "scripts" type the following command:
 
 "homepage": "https://github.com/chevano/Marxx#readme", --> Might be relevant
 
-543) Save and push changes to github
-544) Go to marxx and run the following command: ( npm run deploy )
-545) Go to github.com and sign-in:
+544) Save and push changes to github
+545) Go to marxx and run the following command: ( npm run deploy )
+546) Go to github.com and sign-in:
 Go to marxx/setting/pages --> and under Build and Deployment set Branch to ( none ) changes to ( gh-pages )
 
 ===============================================================================================
 Save Changes and Push it to Github : Update log file 31 --> 32 ( Remove files for render.com )
 ===============================================================================================
 
-537) Go to Marxx folder
-538) git add .
-539) git commit -m "Deploy App to github"
-540) git push origin main
+547) Go to Marxx folder
+548) git add .
+549) git commit -m "Deploy App to github"
+550) git push origin main
