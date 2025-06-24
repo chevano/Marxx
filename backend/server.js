@@ -6,6 +6,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import path from 'path';
 
 dotenv.config();
 
@@ -19,6 +20,9 @@ mongoose
   });
 
 const app = express(); // Initializes a new instance of an Express App
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
