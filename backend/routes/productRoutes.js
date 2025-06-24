@@ -5,7 +5,7 @@ const productRouter = express.Router();
 
 // Sends the list of products to the frontend
 productRouter.get('/', async (req, res) => {
-  const products = await Product.find();
+  const products = await Product.find({});
   res.send(products);
 });
 

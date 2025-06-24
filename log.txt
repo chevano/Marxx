@@ -1117,7 +1117,7 @@ Render.com : Deploying the Application
 542) Click Web Services( New Web Service ) --> Under Connect Git provider( Github ) --> Authorize Render
 --> Chevano --> Only select repositories( chevano/Marxx ) --> install
 543) Set the fields as follows:
-a) Name to ( Marxx )
+a) Name to ( Marxx/backend )
 b) Root Directory to ( backend )
 c) Language to ( Node )
 d) Branch to ( main )
@@ -1133,7 +1133,7 @@ for authorization and authentication, and setting PORT to 10000, which is found 
 --> Chevano --> Only select repositories( chevano/Marxx ) --> install
 549) Set the fields as follows:
 a) Name to ( Marxx )
-b) Environment to ( Node )
+b) Root Directory to  ( frontend )
 c) Branch to ( main )
 d) Build Command to ( npm run build )
 e) Publish Directory to ( build )
