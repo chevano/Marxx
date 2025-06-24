@@ -1,7 +1,6 @@
 {
   "name": "marxx",
   "version": "1.0.0",
-  "homepage": "https://chevano.github.io/Marxx",
   "main": "index.js",
   "scripts": {
     "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
