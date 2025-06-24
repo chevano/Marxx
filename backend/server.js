@@ -23,6 +23,9 @@ const app = express(); // Initializes a new instance of an Express App
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (res, req) => {
+  res.send('testing home route');
+});
 app.get('/api/keys/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
