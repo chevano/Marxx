@@ -1137,17 +1137,17 @@ b) Root Directory to  ( frontend )
 c) Branch to ( main )
 d) Build Command to ( npm run build )
 e) Publish Directory to ( build )
-549) Set Environment Variables:
-key: REACT_APP_BACKEND_URL
-value: https://marxx-backend.onrender.com
+550) Inside marxx/frontend/package.json file set
+"proxy": "https://marxx-backend.onrender.com",
 
+For local dev:
 marxx/frontend/package.json:  "proxy": "http://localhost:5000",
 
 =======================================================
-Save Changes and Push it to Github : Update log file 32
+Save Changes and Push it to Github : Update log file 33
 =======================================================
 
 550) Go to Marxx folder
 551) git add .
-552) git commit -m "Deploy App to render.com"
+552) git commit -m "Deploy to render.com 3"
 553) git push origin main
