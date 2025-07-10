@@ -1105,11 +1105,8 @@ Save Changes and Push it to Github : Update log file 30
 540) git push origin main
 
 
-==============================================
-Github pages : Deploying the Application
-==============================================
 
-==============================================Add commentMore actions
+==============================================
 Render.com : Deploying the Application
 ==============================================
 
@@ -1142,12 +1139,40 @@ e) Publish Directory to ( build )
 
 For local dev:
 marxx/frontend/package.json:  "proxy": "http://localhost:5000",
+551) Works but too slow ( Using the free version )
 
 =======================================================
 Save Changes and Push it to Github : Update log file 33
 =======================================================
 
-550) Go to Marxx folder
-551) git add .
-552) git commit -m "Deploy to render.com 3"
-553) git push origin main
+552) Go to Marxx folder
+553) git add .
+554) git commit -m "Deploy to render.com 3"
+555) git push origin main
+
+
+===============================================
+Customer Panel : Create Sidebar and Search Box
+===============================================
+
+556) Go to marxx/frontend/src/App.js and create a state to keep track of whether the sidebar is open or close namely ( sidebarIsOpen ) useState hook
+557) Adjust the styling of the div in the JSX to display the sidebar depeneding on whether sidebar is open or close
+558) Go to marxx/frontend/src/index.css and define the styling mention above
+559) Go to marxx/frontend/src/App.js and add a bootstrap Button component to toggle the sidebar
+560) Create a Nav container ( <Nav> ) and render the categories 
+561) Create a useState hook namely ( categories ) 
+562) Make a call to the useEffect hook to fetch the list of categories from the backend using endpoint (`/api/products/categories`);
+563) Go to marxx/backend/routes/productRoutes.js and define the method with endpoint (`/api/products/categories`);
+564) Go to marxx/frontend/src/components and create a file called ( SearchBox.js ) which will be used to create the search box component
+565) Inside SearchBox.js, create a bootstrap form component ( <Form> ) to submit the data that was entered by the user
+566) Go to marxx/frontend/src/App.js and under <Navbar.Collapse> component render the search box component ( <SearchBox> )
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+567) Go to Marxx folder
+568) git add .
+569) git commit -m "Create Sidebar and Search Box"
+570) git push origin main
