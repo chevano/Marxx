@@ -1176,3 +1176,45 @@ Save Changes and Push it to Github
 568) git add .
 569) git commit -m "Create Sidebar and Search Box"
 570) git push origin main
+
+
+=======================================================
+Customer Panel : Create Search Screen 
+=======================================================
+
+571) Go to marxx/frontend/src/screens folder and create a file called ( SearchScreen.js )
+572) Inside ( SearchScreen.js ) create a react functional component
+573) Make a call to ( useNavigate, useLocation and Link ) to direct the user to a specific page
+574) Create the following filters ( category, query, price, rating, order, and page ) to display content based on the user selection
+575) Make a call to useReducer hook and extract the following props: loading, error, products, pages, countProducts,
+while setting the default value of loading to true and error to an empty string
+576) Create a reducer function above the react functional component ( SearchScreen ) that handles the following cases:
+a) When action.type is set to ( FETCH_REQUEST ), update ( loading to true ) then return the updated state
+b) When action.type is set to ( FETCH_SUCCESS ), update ( products, page, pages, and countProducts ) to its corresponding payload,
+for instance products will be set to action.payload.products and update the ( loading variable ) to false
+c) When action.type is set to ( 'FETCH_FAIL' ), update ( loading to false, and error to action.payload );
+d) For any other cases ( default ) just return the current state.
+577) Make a call to the useEffect hook, while fetching the data ( query string ) from the backend 
+578) Create a useState hook namely ( categories, and setCategories ) which will be used to store the selected categories from the backend
+579) Make a call to the useEffect hook to fetch the selected categories from the backend
+580) Create a variable called ( getFilterUrl ) that returns a query string that holds the filtered version of 
+(page, category, query, ratings, price and order )
+581) Inside the JSX code section, create a div container ( <div> ) that wraps all the code.
+582) Inside the above ( <div> ) create a bootstrap Row container ( <Row> ) that holds
+two bootstrap Col container ( <Col> ), where the first <Col> has 3 out of 12 units on medium screen,
+this <Col md={3}> holds the following information: ( Department, Price, and Customer Reviews )
+583) The second <Col> has the remaining 9 out of 12 units on medium screen ( <Col md={9} ).
+this <Col md={9}> holds the following information: ( The number of products in stock, a list of all the products, and a section to sort the products
+based on the following properties: Newest Arrivals, Price: Low to High, Price: High to Low, Avg. Customer Reviews)
+584) Go to ( marxx/backend/routes/productRoutes.js ) to handle the request that was made on the front-end,
+using endpoint ('/api/products/search').
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+585) Go to Marxx folder
+586) git add .
+587) git commit -m "Create Search Screen"
+588) git push origin main
