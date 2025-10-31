@@ -1218,3 +1218,36 @@ Save Changes and Push it to Github
 586) git add .
 587) git commit -m "Create Search Screen"
 588) git push origin main
+
+
+==================================
+Admin Panel : Create Admin View 
+==================================
+
+589) Go to marxx/frontend/src/components and create a component that will ensure the 
+user is signed-in before they can vist the request page, namely ( ProtectedRoute.js )
+590) Inside ProtectedRoute.js create a react functional component that checks whether a user is signed-in
+before allowing the user to go to the request page.
+If the user is logged-in then they are allowed to visited the request page, otherwise they are redirected to the sign-in page.
+591) Recall the object that keeps track of whether a user is signed-in or not is ( userInfo )
+in order to obtain ( userInfo ) we must deconstruct ( state ) from ( useContext( Store ) ),
+and then deconstruct ( userInfo ) from ( state )
+592) Go to marxx/frontend/src/App.js and wrap all routes that should need authentication before visiting.
+593) Inside App.js create an ( Admin dropdown ) that contains the options ( Dashboard, Products, Orders, and Users )
+594) Go to marxx/frontend/src/screens and create a file called ( DashboardScreen.js ),
+which will be used as the Dashboard page.
+595) Inside DashboardScreen.js create a react functional component
+596) Go to marxx/frontend/src/components and create a file called ( AdminRoute.js )
+which will be used for authentication purpose.
+597) Go to marxx/frontend/src/App.js and wrap the ( DashboardScreen.js ) inside ( AdminRoute.js )
+, which ensure that a user must be an admin before they can view the Dashboard page.
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+598) Go to Marxx folder
+599) git add .
+600) git commit -m "Create Admin View"
+601) git push origin main

@@ -45,7 +45,7 @@ export default function SigninScreen() {
 
   return (
     <div>
-      <CheckoutSteps step1 />
+      {/* <CheckoutSteps step1 /> */}
       <Container className="small-container">
         <h1 className="my-3">Sign In</h1>
         <Form onSubmit={submitHandler}>
