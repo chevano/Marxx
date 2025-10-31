@@ -1251,3 +1251,46 @@ Save Changes and Push it to Github
 599) git add .
 600) git commit -m "Create Admin View"
 601) git push origin main
+
+
+=========================================
+Admin Panel : Create Dashboard Page
+=========================================
+
+602) Go to marxx/frontend/src/screens/DashboardScreen and create a ( reducer ) function
+above the react functional component ( DashboardScreen ), where the ( reducer ) 
+will be used to fetch the ( Dashboard data ) from the backend.
+603) Inside the DashboardScreen function, make a call to a ( useReducer hook )
+while passing the reducer function as a parameter and setting the initial values of ( loading ) to true
+and ( error ) to an empty string. while deconstructing the ( loading, summary, and error ) variables
+and the dispatch function
+604) Deconstruct ( state ) from useContext( Store ) and then deconstruct ( userInfo ) from ( state )
+605 Use the useEffect hook to send an ajax request to the backend to get the Dashboard data using the endpoint
+( '/api/orders/summary' ), in addition use the option (  headers: { Authorization: `Bearer ${userInfo.token}`} )
+to authenticate the request.
+606) Inside the JSX, create a Dashboard heading, check whether the page is loading, if it is then display
+the loading box component ( <LoadingBox /> )
+If there is an error, then display the message box component ( <MessageBox /> ) and set the variant to danger, while displaying the error.
+Otherwise display the UI for the Dashboard Page.
+607) Inside the react functional component, create a single bootstrap row container ( <Row> )
+that has 3 bootstrap col container ( <Col> ), where on medium devices, each ( <Col> ) span 4 out of 12 units
+and the 3 ( <Col> ) displays Users, Orders, and Total Sales Statistics.
+608) Go to marxx/backend/routes/orderRoutes.js and implement the response for the endpoint ( '/api/orders/summary' )
+609) Inside marxx/backend/utils.js, create a middleware function called ( Admin ) that ensures the ( user ) is an ( admin ) 
+before they can proceed to the requested page
+610) Inside marxx/backend/routes/orderRoutes.js in the function with endpoint ( '/api/orders/summary' ), use the aggregate functions from MongoDB
+to calculate the stats for number of ( Users  and Orders ), as well as the ( Total Sales )
+611) Go to ( react-google-charts.com ) to see how to implement their icons.
+612) Go to marxx/frontend and run ( npm install --save react-google-charts )
+613) Remember to import google chart ( import Chart from 'react-google-charts' ) in ( DashboardScreen.js ) by using the chart component ( <Chart> )
+614) Go back to orderRoutes.js inside the ('/summary') function and calculate ( dailyOrders, and productCategories) using MongoDB Aggregate functions.
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+615) Go to Marxx folder
+616) git add .
+617) git commit -m "Create Dashboard Page"
+618) git push origin main
