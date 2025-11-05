@@ -29,6 +29,7 @@ import SearchScreen from './screens/SearchScreen';
 import ProtectedRoute from './components/ProtectedRoute';
 import DashboardScreen from './screens/DashboardScreen';
 import AdminRoute from './components/AdminRoute';
+import ProductListScreen from './screens/ProductListScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -126,21 +127,21 @@ function App() {
                       </Link>
 
                       <Link
-                        to="/admin/userlist"
+                        to="/admin/users"
                         className="remove_underline dropdown-item"
                       >
                         Users
                       </Link>
 
                       <Link
-                        to="/admin/orderlist"
+                        to="/admin/orders"
                         className="remove_underline dropdown-item"
                       >
                         Orders
                       </Link>
 
                       <Link
-                        to="/admin/productlist"
+                        to="/admin/products"
                         className="remove_underline dropdown-item"
                       >
                         Products
@@ -223,6 +224,16 @@ function App() {
                   </AdminRoute>
                 }
               />
+
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <ProductListScreen />
+                  </AdminRoute>
+                }
+              />
+
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>

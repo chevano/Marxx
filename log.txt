@@ -1294,3 +1294,33 @@ Save Changes and Push it to Github
 616) git add .
 617) git commit -m "Create Dashboard Page"
 618) git push origin main
+
+
+=========================================
+Admin Panel : Manage Products
+=========================================
+
+619) Go to marxx/frontend/src/screens and create a file called ( ProductListScreen.js )
+which holds the list of products that were ordered by the user(s)
+620) Inside ( ProductListScreen.js ) create a react functional component.
+621) Define a reducer to manage state of fetching products from backend
+622) Make a call to ( useReducer ) hook, and de-construct the variables:
+( loading, error, products, and pages ) as well as the ( dispath ) function,
+while setting loading to true and error to an empty string.
+623) Make a call to the ( useEffect ) hook to send an ajax request to the backend,
+using the endpoint ( `/api/products/admin?page=${page}` )
+624) Inside the JSX, display a message when the page is loading, or has an error.
+Otherwise, create a table that displays the ( product ) data for the columns ( ID, NAME, PRICE, CATEGORY and BRAND )
+625) Display the Pagination
+626) Go to marxx/backend/routes/productRoutes.js and create an ( '/admin' ) route using the GET method
+627) Go to ( App.js ) and render a route for ( ProductListScreen )
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+628) Go to Marxx folder
+629) git add .
+630) git commit -m "Manage Products"
+631) git push origin main
