@@ -1324,3 +1324,28 @@ Save Changes and Push it to Github
 629) git add .
 630) git commit -m "Manage Products"
 631) git push origin main
+
+
+=========================================
+Admin Panel : Create a Product
+=========================================
+
+632) Go to marxx/backend/routes/productRoutes.js and create a route with 
+endpoint ('/', isAuth, isAdmin, expressAsyncHandler ) using a POST method
+633) Create an instance of a product namely ( newProduct ) by calling the Product model
+and passing a sample data. 
+634) Then save the populated instance ( newProduct ) to the database and store the result
+in a variable called ( product ).
+635) Use res.send to send a message and the newly created product ( product ) to the frontend.
+636) Go to marxx/frontend/src/screens/ProductListScreen.js and update the UI so that it displays a button
+that creates a product from scratch
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+628) Go to Marxx folder
+629) git add .
+630) git commit -m "Create a Product"
+631) git push origin main
