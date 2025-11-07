@@ -1345,7 +1345,38 @@ that creates a product from scratch
 Save Changes and Push it to Github 
 =======================================================
 
-628) Go to Marxx folder
-629) git add .
-630) git commit -m "Create a Product"
-631) git push origin main
+637) Go to Marxx folder
+638) git add .
+639) git commit -m "Create a Product"
+640) git push origin main
+
+
+==============================================
+Admin Panel : Create the Product Edit Screen
+==============================================
+
+641) Go to marxx/frontend/src/screens and create a file called ( ProductEditScreen.js )
+which will hold the UI to edit a Product.
+642) Inside ProductEditScreen deconstruct ( userInfo ) from the Context API ( useContext(Store) ),
+where useInfo.token will be use for authenticating a user.
+643) Define a reducer function
+644) Make a call to ( useReducer ) hook and pass the reducer function as a parameter and  as well as
+( loading and error ), where loading is initially set to true and error is set to an empty string
+645) Create a useState hook for all the fields that a product consist of, such as
+( name, category, brand, price, numReviews, rating, image) 
+646) Make a call to ( useEffect ) hook to send an ajax request to the backend
+647) Wrap the entire UI inside a bootstrap conatainer, namely ( <Container> )
+648) Display a loading box if the page is still loading, or display an error box if the page crash,
+otherwise render the rest of the UI.
+649) Go to marxx/frontend/src/App.js and render the ( ProductEditScreen ) page 
+
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+650) Go to Marxx folder
+651) git add .
+652) git commit -m "Create the Product Edit Screen"
+653) git push origin main
