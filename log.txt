@@ -1380,3 +1380,25 @@ Save Changes and Push it to Github
 651) git add .
 652) git commit -m "Create the Product Edit Screen"
 653) git push origin main
+
+
+==============================================
+Admin Panel : Updating a Product
+==============================================
+
+654) Go to marxx/frontend/src/screens/ProductEditScreen.js and set an onSubmit attribute
+to the bootstrap form component ( <Form> ) and create a handler namely ( submitHandler )
+which will be used to send over the Form data to the backend
+655) Update the ( reducer ) function to manage the state of ( UPDATE_REQUEST, UPDATE_SUCCESS, and UPDATE_FAIL )
+656) Go to marxx/backend/routes/productRoutes.js and handle the request made on the frontend with 
+endpoint( '/:id' ) using the PUT method.
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+657) Go to Marxx folder
+658) git add .
+659) git commit -m "Updating a Product"
+660) git push origin main

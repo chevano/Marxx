@@ -79,7 +79,7 @@ export default function ProductListScreen() {
         dispatch({ type: 'CREATE_SUCCESS' });
         navigate(`/admin/product/${data.product._id}`); // direct to the Edit Page
       } catch (err) {
-        toast.error(getError(error));
+        toast.error(getError(err));
         dispatch({
           type: 'CREATE_FAIL',
         });
