@@ -1402,3 +1402,41 @@ Save Changes and Push it to Github
 658) git add .
 659) git commit -m "Updating a Product"
 660) git push origin main
+
+
+==============================================
+Admin Panel : Upload Product Image
+==============================================
+
+661) Create a cloudinary account at ( cloudinary.com ) to store images in the cloud,
+which will be later used in the app
+662) Store the credentials of ( CLOUDINARY_API_SECRET, CLOUDINARY_API_KEY, CLOUDINARY_URL, CLOUDINARY_CLOUD_NAME )
+in marxx/backend/.env
+663) Note all uploaded files are found at ( Media Library ==> Folders ) on cloudinary
+664) Go to marxx/backend and install the cloudinary package ( npm i cloudinary ) and streamifier package ( npm i streamifier )
+665) Go to marxx/backend/routes and create a file namely ( uploadRoutes.js ),
+which will be used to upload an image from any device to the server.
+666) Inside ( uploadRoutes.js ) create an instance of express.Router and call it ( uploadRouter )
+667) Send back to the frontend a POST response with endpoint ( '/api/upload' )
+668) Import the cloudinary package, and streamifier
+669) Configure cloudinary by using cloudinary.config({}) and passing the credentials for
+( CLOUDINARY_API_SECRET, CLOUDINARY_API_KEY, CLOUDINARY_URL, CLOUDINARY_CLOUD_NAME ) 
+670) Create an instance of ( multer() ) and call it ( upload ) and install the multer package in marxx/backend 
+by running ( npm i multer)
+671) Go to marxx/frontend/src/screens/ProductEditScreen.js and add the following three cases to the ( reducer ) function
+to manage the state for when there is a request, success, or failure when the admin tries to upload an image file.
+These cases are: ( UPLOAD_REQUEST, UPLOAD_SUCCESS, UPLOAD_FAIL )
+672) Deconstruct ( loadingUpload ) inside the ( useReducer ) hook
+673) Update the JSX by adding another <Form.Group> component to upload image file
+674) Make an ajax POST request to the endpoint ( '/api/upload' ) using the handler ( uploadFileHandler ) 
+675) Go to marxx/backend/server.js and add the ( '/api/upload' ) endpoint to app.use() function
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+657) Go to Marxx folder
+658) git add .
+659) git commit -m "Upload Product Image"
+660) git push origin main
