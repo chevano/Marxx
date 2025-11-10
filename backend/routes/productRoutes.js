@@ -1,5 +1,5 @@
 import express from 'express';
-import expressAsyncHandler from 'express-async-handler';
+import expressAsyncHandler from 'express-async-handler'; // use to handle async errors
 import Product from '../models/productModel.js';
 import { isAdmin, isAuth } from '../utils.js';
 
@@ -56,6 +56,21 @@ productRouter.put(
   })
 );
 
+productRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      await product.deleteOne();
+      res.send({ message: 'Product Deleted' });
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+);
 const PAGE_SIZE = 3;
 
 productRouter.get(

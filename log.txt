@@ -1436,7 +1436,32 @@ These cases are: ( UPLOAD_REQUEST, UPLOAD_SUCCESS, UPLOAD_FAIL )
 Save Changes and Push it to Github 
 =======================================================
 
-657) Go to Marxx folder
-658) git add .
-659) git commit -m "Upload Product Image"
-660) git push origin main
+676) Go to Marxx folder
+677) git add .
+678) git commit -m "Upload Product Image"
+679) git push origin main
+
+
+==============================================
+Admin Panel : Deleting a Product 
+==============================================
+
+680) Go to marxx/frontend/src/screens/ProductListScreen.js and add a bootstrap button component ( <Button> ),
+and call it Delete. In addition, add a handler, namely ( deleteHandler ) to the ( onClick ) attribute,
+where the ( deleteHandler ) will remove a product base on the id of the product using an ajax request 
+with endpoint (  `/api/products/${product._id}`). 
+681) Inside the ( reducer ) function, add four cases to manage the state of the reducer, namely
+( DELETE_REQUEST, DELETE_SUCCESS, DELETE_FAIL, DELETE_RESET )
+682) Go to marxx/backend/routes/productRoutes and handle the delete request from the frontend, 
+by searching the database for the product, using the Id of the product.
+
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+683) Go to Marxx folder
+684) git add .
+685) git commit -m "Deleting a Product"
+686) git push origin main
