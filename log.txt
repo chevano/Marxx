@@ -1465,3 +1465,39 @@ Save Changes and Push it to Github
 684) git add .
 685) git commit -m "Deleting a Product"
 686) git push origin main
+
+
+===============================
+Admin Panel : List Orders
+===============================
+
+687) Go to marxx/frontend/src/screens and create a file called ( OrderListScreen.js ),
+which will be the page that holds the UI for displaying all the orders.
+688) Inside OrderListScreen.js, deconstruct userInfo object from ( useContext(Store) ),
+which will be used to authenticate the request made on the frontend to the backend.
+689) Make a call to the useEffect hook and inside the useEffect hook, create a function called
+( fetchData ) that will be used to send an ajax GET request to the backend with endpoint
+("/api/orders") as well as the authentication token from ( userInfo.token )
+690) Create a ( reducer ) function to manage the state while requests are being made. The
+request are as follows: ( FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAIL ) 
+691) Make a call to the ( useReducer ) hook and deconstruct the ( loading, error and orders )
+object as well as the ( dispatch ) function.
+692) Inside the JSX display create a h1 element that displays ( List of Orders ), then
+check the loading object to see if the page is still loading. If the page is still loading
+display the loading box component ( <LoadingBox> ).
+After that, check the ( error ) object, and display the message box component ( <MessageBox> ) and 
+display the error object.
+Otherwise, create a table to store data about the ( orders ) such as ( ID, USER, DATE, TOTAL, PAID, DELIVERED, ACTIONS )
+693) Go to marxx/backend/routes/orderRoutes.js and handle the request made on the frontend with 
+endpoint GET ('/api/orders')
+694) Go to marxx/frontend/src/App.js and render the OrderListScreen.js file
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+683) Go to Marxx folder
+684) git add .
+685) git commit -m "List Orders"
+686) git push origin main
