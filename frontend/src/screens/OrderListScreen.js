@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
@@ -15,6 +16,15 @@ const reducer = (state, action) => {
       return { ...state, loading: false, orders: action.payload };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
+
+    case 'DELETE_REQUEST':
+      return { ...state, loadingDelete: true, successDelete: false };
+    case 'DELETE_SUCCESS':
+      return { ...state, loadingDelete: false, successDelete: true };
+    case 'DELETE_FAIL':
+      return { ...state, loadingDelete: false };
+    case 'DELETE_RESET':
+      return { ...state, loadingDelete: false, successDelete: false };
     default:
       return state;
   }
@@ -25,10 +35,11 @@ export default function OrderListScreen() {
 
   const navigate = useNavigate();
 
-  const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, orders, loadingDelete, successDelete }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: '',
+    });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,14 +56,37 @@ export default function OrderListScreen() {
         });
       }
     };
-    fetchData();
-  }, [userInfo]);
+    // Both conditional statements ( if-else ) allows the page to reload whenever an order is deleted
+    if (successDelete) {
+      dispatch({ type: 'DELETE_RESET' }); // Changes successDelete to false
+    } else {
+      fetchData();
+    }
+  }, [userInfo, successDelete]);
+
+  const deleteHandler = async (order) => {
+    if (window.confirm('Are you sure you want to delete this order')) {
+      try {
+        dispatch({ type: 'DELETE_REQUEST' });
+        await axios.delete(`/api/orders/${order._id}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        toast.success('order deleted successfully');
+        dispatch({ type: 'DELETE_SUCCESS' });
+      } catch (err) {
+        toast.error(getError(err));
+        dispatch({
+          type: 'DELETE_FAIL',
+        });
+      }
+    }
+  };
 
   return (
     <div>
       <title>List of Orders</title>
       <h1>List of Orders</h1>
-
+      {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -86,6 +120,7 @@ export default function OrderListScreen() {
                 </td>
                 <td>
                   <Button
+                    className="mx-1"
                     type="button"
                     variant="light"
                     onClick={() => {
@@ -93,6 +128,15 @@ export default function OrderListScreen() {
                     }}
                   >
                     Details
+                  </Button>
+
+                  <Button
+                    className="mx-1"
+                    type="button"
+                    variant="light"
+                    onClick={() => deleteHandler(order)}
+                  >
+                    Delete
                   </Button>
                 </td>
               </tr>

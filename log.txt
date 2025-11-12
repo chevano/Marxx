@@ -1527,3 +1527,33 @@ Save Changes and Push it to Github
 705) git add .
 706) git commit -m "Deliver Order"
 707) git push origin main
+
+
+===============================
+Admin Panel : Delete an Order
+===============================
+
+708) Go to marxx/frontend/src/screens/OrderListScreen.js and add a Delete Button, where
+the onClick attribute is set to deleteHandler(order)
+709) Implement the deleteHandler such that it sends an ajax delete request with
+endpoint (`/api/orders/${order._id}` to the backend
+710) Update the ( reducer ) function such that it accounts for four more cases, these
+are as followings ( DELETE_REQUEST, DELETE_SUCCESS, DELETE_FAIL, DELETE_RESET )
+711) Update the useReducer hook such that it deconstruct ( loadingDelete and successDelete )
+712) Add successDelete to the useEffect hook dependency list
+713) Reload the page whenever an order is deleted from the list of orders.
+714) Inside the JSX render the <LoadingBox> component, if an order is being deleted
+715) Go to marxx/backend/routes/orderRoutes.js ( backend ) and implement the response to the request made on the frontend
+with endpoint delete (`/api/orders/${order._id}`
+716) Search the database for the order that should be deleted using the id of the order.
+If the order is found remove it from the database otherwise send a message to admin saying "Order is Not Found"
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+717) Go to Marxx folder
+718) git add .
+719) git commit -m "Delete an Order"
+720) git push origin main
