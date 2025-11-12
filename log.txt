@@ -1557,3 +1557,35 @@ Save Changes and Push it to Github
 718) git add .
 719) git commit -m "Delete an Order"
 720) git push origin main
+
+
+===============================
+Admin Panel : List Users
+===============================
+
+721) Go to marxx/frontend/src/screens/ and create a file called ( UserListScreen.js ) which will be
+the UI for displaying all the users in the database
+722) Inside ( UserListScreen.js ) create a react functional component
+723) Make a call to the useReducer hook and deconstruct ( loading, error, and users ) state as well as the ( dispatch ) function
+which will be used to call action on the ( reducer )
+724) Define a reducer, that manages three cases ( 'FETCH_REQUEST', 'FETCH_SUCCESS', and 'FETCH_FAIL' )
+725) Deconstruct ( userInfo ) object from ( useContext(Store) )
+726) Make a call to the ( useEffect ) hook and inside the useEffect, create a function namely ( fetchData ),
+that will send an ajax request to the backend( userRoutes.js ) with endpoint GET ( '/api/users' )
+727) Inside the JSX, set the ( <title> and <h1> ) element to List of Users.
+728) Create a conditional statement that renders the ( <LoadingBox> ) component if the page is loading,
+create a ( <MessageBox> ) component and display the ( error ) object, if the page encounters an error,
+Otherwise render the rest of the UI, which is a table, where the table headers are as follows:
+( ID, NAME, EMAIL, ADMIN, ACTIONS ) and the table data comes from calling the ( map ) function on the ( users ) object
+729) Go to marxx/backend/routes/userRoutes.js and implement the response to GET ( '/api/users' ),
+which is accomplish by scanning the database for all users and then return those users to the frontend ( UserListScreen.js )
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+717) Go to Marxx folder
+718) git add .
+719) git commit -m "List Users"
+720) git push origin main
