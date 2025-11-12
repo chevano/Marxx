@@ -1497,7 +1497,33 @@ endpoint GET ('/api/orders')
 Save Changes and Push it to Github 
 =======================================================
 
-683) Go to Marxx folder
-684) git add .
-685) git commit -m "List Orders"
-686) git push origin main
+695) Go to Marxx folder
+696) git add .
+697) git commit -m "List Orders"
+698) git push origin main
+
+
+===============================
+Admin Panel : Deliver Order
+===============================
+
+699) Go to marxx/frontend/src/screens/OrderScreen.js 
+and add a button to show when an order is delivered, namely ( Deliver Order )
+This button will only be showed if the order is paid in full and the order wasn't delivered
+700) Set the onClick attribute of the button to a function that will ensure the order Is
+set to deliver, namely ( deliverOrderHandler )
+701) Add three more cases to the reducer function to manage the state, such as 
+( DELIVER_REQUEST, DELIVER_SUCCESS, DELIVER_FAIL )
+702) Update the useReducer hook such that ( loadingDeliver, and successDeliver ) gets deconstruct
+703 Inside the ( deliverOrderHandler ) function make an ajax Put request 
+with endpoint ( `/api/orders/${order._id}/deliver` ) to the backend in this case ( orderRoutes.js )
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+704) Go to Marxx folder
+705) git add .
+706) git commit -m "Deliver Order"
+707) git push origin main
