@@ -1585,7 +1585,40 @@ which is accomplish by scanning the database for all users and then return those
 Save Changes and Push it to Github 
 =======================================================
 
-717) Go to Marxx folder
-718) git add .
-719) git commit -m "List Users"
-720) git push origin main
+730) Go to Marxx folder
+731) git add .
+732) git commit -m "List Users"
+733) git push origin main
+
+
+===============================
+Admin Panel : Edit User
+===============================
+
+734) Go to marxx/frontend/src/screens/UserListScreen.js and add an Edit Button, that direct the user to an Edit Page,
+where the user can change their info.
+735) Go to marxx/frontend/src/screens/ and create a file called ( UserEditScreen.js ), 
+which will be the page that allows the user to change their info
+736) Create a react functional component
+737) Create a reducer such that it handles 6 cases ( FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAIL, 
+UPDATE_REQUEST, UPDATE_SUCCESS, and UPDATE_FAIL )
+738) Make a call to the ( useReducer ) hook and deconstruct ( loading, error, and loadingUpdate ) variables
+and the ( dispatch ) function
+739) Deconstruct ( userInfo ) from ( useContext(Store) ), where the userInfo will be use to authenticate the ajax request later
+740) Create 3 useState variables (name, email and isAdmin), which will be collected from the user and sent to the backend
+741) Make a call to the ( useEffect ) hook to fetch data from the backend using the ( fetchData ) function
+742) Create a UI to accept user input for ( name, email, isAdmin) inside a ( Form ) component
+743) Set the onSubmit attribute on the Form to ( submitHandler ), which will be used to send over ( name email, isAdmin ) data.
+to the backend using the endpoint ( `/api/users/${userId}` )
+744) Go to marxx/frontend/src/App.js and render the ( UserEditScreen ) page
+745) Go to marxx/backend/routes/userRoutes.js and implement the GET ('/api/user/:id') and PUT ('/api/user/:id') endpoints
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+746) Go to Marxx folder
+747) git add .
+748) git commit -m "Edit User"
+749) git push origin main
