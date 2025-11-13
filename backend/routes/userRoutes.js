@@ -50,6 +50,25 @@ userRouter.put(
   })
 );
 
+userRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+
+    if (user) {
+      if (user.email === 'chevanogordon@gmail.com') {
+        res.status(400).send({ message: 'Cannot Delete Admin User' });
+        return;
+      }
+      await user.deleteOne();
+      res.send({ message: 'User Deleted' });
+    } else {
+      res.status(404).send({ message: 'User Not Found' });
+    }
+  })
+);
 // The expressAyncHandler is used to catch the error if one occurs
 userRouter.post(
   '/signin',

@@ -18,6 +18,7 @@ const reducer = (state, action) => {
       return { ...state, loading: false };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
+
     case 'UPDATE_REQUEST':
       return { ...state, loadingUpdate: true };
     case 'UPDATE_SUCCESS':

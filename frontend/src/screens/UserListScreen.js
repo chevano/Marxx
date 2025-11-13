@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
@@ -15,16 +16,26 @@ const reducer = (state, action) => {
       return { ...state, loading: false, users: action.payload };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
+
+    case 'DELETE_REQUEST':
+      return { ...state, loadingDelete: true, successDelete: false };
+    case 'DELETE_SUCCESS':
+      return { ...state, loadingDelete: false, successDelete: true };
+    case 'DELETE_FAIL':
+      return { ...state, loadingDelete: false };
+    case 'DELETE_RESET':
+      return { ...state, loadingDelete: false, successDelete: false };
     default:
       return state;
   }
 };
 
 export default function UserListScreen() {
-  const [{ loading, error, users }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, users, loadingDelete, successDelete }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: '',
+    });
 
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -45,14 +56,39 @@ export default function UserListScreen() {
         });
       }
     };
-    fetchData();
-  }, [userInfo]);
+    // Refreshes the page after a user has been deleted
+    if (successDelete) {
+      dispatch({ type: 'DELETE_RESET' }); // Changes successDelete to false
+    } else {
+      fetchData();
+    }
+  }, [userInfo, successDelete]);
+
+  const deleteHandler = async (user) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      try {
+        dispatch({ type: 'DELETE_REQUEST' });
+        await axios.delete(`/api/users/${user._id}`, {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        toast.success('User Deleted Successfully');
+        dispatch({ type: 'DELETE_SUCCESS' });
+      } catch (err) {
+        toast.error(getError(err));
+        dispatch({
+          type: 'DELETE_FAIL',
+          payload: getError(err),
+        });
+      }
+    }
+  };
 
   return (
     <div>
       <title>List of Users</title>
       <h1>Users</h1>
 
+      {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -78,11 +114,21 @@ export default function UserListScreen() {
                 <td>{user.isAdmin ? 'YES' : 'NO'}</td>
                 <td>
                   <Button
+                    className="mx-1"
                     type="button"
                     variant="light"
                     onClick={() => navigate(`/admin/user/${user._id}`)}
                   >
                     Edit
+                  </Button>
+
+                  <Button
+                    className="mx-1"
+                    type="button"
+                    variant="light"
+                    onClick={() => deleteHandler(user)}
+                  >
+                    Delete
                   </Button>
                 </td>
               </tr>

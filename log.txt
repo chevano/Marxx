@@ -1622,3 +1622,31 @@ Save Changes and Push it to Github
 747) git add .
 748) git commit -m "Edit User"
 749) git push origin main
+
+
+===============================
+Admin Panel : Delete User
+===============================
+
+750) Go to marxx/frontend/src/screens/UserListScreen.js and add a Delete Button,
+in addition add an onClick attribute to the Button, and when the user click the button run
+the deleteHandler(user) function.
+751) Implement the ( deleteHandler ) function, such that it sends an ajax request to delete the selected user.
+using the endpoint DELETE (`/api/users/${user._id}`
+752) Go to userRoutes.js on the backend and implement the DELETE (`/api/users/${user._id}` request made on the frontend
+753) Go to marxx/frontend/src/screens/UserListScreen.js and add 4 cases to the reducer function to managa the state,
+these cases include ( 'DELETE_REQUEST', 'DELETE_SUCCESS', 'DELETE_FAIL', 'DELETE_RESET' )
+754) Deconstruct ( loadingDelete, and successDelete ) from the ( useReducer ) hook
+755) In the useEffect hook write a condition statement such that when a user is delete the entire page reloads
+756) Render a loading box component ( <LoadingBox> ) if the page is still loading after deleting a user, with the help
+of the ( loadingDelete ) variable.
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+757) Go to Marxx folder
+758) git add .
+759) git commit -m "Delete User"
+760) git push origin main
