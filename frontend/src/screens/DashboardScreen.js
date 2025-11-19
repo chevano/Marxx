@@ -53,7 +53,8 @@ export default function DashboardScreen() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <title>Dashboard</title>
+      <h1 className="my-3 white_color">Dashboard</h1>
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -103,7 +104,7 @@ export default function DashboardScreen() {
           </Row>
 
           <div className="my-3">
-            <h2>Sales</h2>
+            <h2 className="my-3 white_color">Sales</h2>
             {summary.dailyOrders.length === 0 ? (
               <MessageBox>No Sale</MessageBox>
             ) : (
@@ -121,7 +122,7 @@ export default function DashboardScreen() {
           </div>
 
           <div className="my-3">
-            <h2>Categories</h2>
+            <h2 className="my-3 white_color">Categories</h2>
             {summary.productCategories.length === 0 ? (
               <MessageBox>No Category</MessageBox>
             ) : (

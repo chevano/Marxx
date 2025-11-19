@@ -136,7 +136,7 @@ export default function ProductListScreen() {
     <div>
       <Row>
         <Col>
-          <h1>Products</h1>
+          <h1 className="white_color my-3">Products</h1>
         </Col>
         <Col className="col text-end">
           <div>

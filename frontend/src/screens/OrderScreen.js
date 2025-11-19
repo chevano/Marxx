@@ -197,7 +197,7 @@ export default function OrderScreen() {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-      <h1 className="my-3">Order {orderId}</h1>
+      <h1 className="my-3 white_color">Order {orderId}</h1>
       <Row>
         <Col md={8}>
           <Card className="mb-3">

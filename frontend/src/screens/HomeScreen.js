@@ -44,14 +44,14 @@ function HomeScreen() {
 
   return (
     <div>
-      <h1> List of Products </h1>
+      <title> List of Products </title>
       <div className="products">
         {loading ? (
           <LoadingBox />
         ) : error ? (
           <MessageBox variant="danger"> {error} </MessageBox>
         ) : (
-          <Row>
+          <Row className="my-3">
             {products.map((product) => (
               <Col
                 key={product.name}

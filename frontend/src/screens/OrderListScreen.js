@@ -85,7 +85,7 @@ export default function OrderListScreen() {
   return (
     <div>
       <title>List of Orders</title>
-      <h1>List of Orders</h1>
+      <h1 className="my-3 white_color">List of Orders</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (
         <LoadingBox></LoadingBox>

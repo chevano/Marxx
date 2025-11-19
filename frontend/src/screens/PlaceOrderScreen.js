@@ -83,7 +83,8 @@ export default function PlaceOrderScreen() {
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4 />
-      <h1 className="my-3">Preview Order</h1>
+      <title>Preview Order</title>
+      <h1 className="my-3 white_color">Preview Order</h1>
       <Row>
         <Col md={8}>
           <Card className="mb-3">

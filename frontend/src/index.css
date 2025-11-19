@@ -119,3 +119,158 @@ main {
 .text-bold {
   font-weight: bold;
 }
+
+.margin-b {
+  margin-bottom: 2rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #111111;
+  color: white;
+  text-align: center;
+  height: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 5rem;
+  }
+
+  .big-box {
+    width: 20rem;
+    height: 3rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 5rem;
+  }
+
+  .big-box {
+    width: 20rem;
+    height: 3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 6.5rem;
+  }
+
+  .big-box {
+    width: 30rem;
+    height: 3rem;
+  }
+
+  .header-box {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 3rem;
+  }
+
+  .header-box {
+    height: 150px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 8rem;
+  }
+
+  .header-box {
+    height: 150px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .center-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+
+  .margin-left {
+    margin-left: 8rem;
+  }
+
+  .header-box {
+    height: 150px;
+    width: 100%;
+  }
+
+  .big-box {
+    width: 35rem;
+    height: 3rem;
+  }
+}

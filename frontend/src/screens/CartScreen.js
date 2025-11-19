@@ -41,7 +41,8 @@ export default function CartScreen() {
 
   return (
     <div>
-      <h1>Shopping Cart</h1>
+      <title>Shopping Cart</title>
+      <h1 className="white_color my-3">Shopping Cart</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
@@ -50,7 +51,7 @@ export default function CartScreen() {
               <Link to="/">Go Shopping</Link>
             </MessageBox>
           ) : (
-            <ListGroup>
+            <ListGroup className="my-3">
               {cartItems.map((item) => (
                 <ListGroup.Item key={item._id}>
                   <Row className="align-items-center">
@@ -99,7 +100,7 @@ export default function CartScreen() {
           )}
         </Col>
         <Col md={4}>
-          <Card>
+          <Card className="my-3">
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>

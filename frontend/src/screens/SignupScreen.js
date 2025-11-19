@@ -57,9 +57,9 @@ export default function SignUpScreen() {
     <div>
       <CheckoutSteps step1></CheckoutSteps>
       <Container className="small-container">
-        <h1 className="my-3">Sign Up</h1>
+        <h1 className="my-3 white_color">Sign Up</h1>
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="name">
+          <Form.Group className="mb-3 white_color" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
@@ -68,7 +68,7 @@ export default function SignUpScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="email">
+          <Form.Group className="mb-3 white_color" controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -77,7 +77,7 @@ export default function SignUpScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="password">
+          <Form.Group className="mb-3 white_color" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -86,7 +86,7 @@ export default function SignUpScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="confirmPassword">
+          <Form.Group className="mb-3 white_color" controlId="confirmPassword">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
@@ -96,12 +96,17 @@ export default function SignUpScreen() {
           </Form.Group>
 
           <div className="mb-3">
-            <Button type="submit">Sign In</Button>
+            <Button type="submit">Sign Up</Button>
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 white_color">
             Already have an account?{' '}
-            <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+            <Link
+              className="darkorange_color"
+              to={`/signin?redirect=${redirect}`}
+            >
+              Sign-In
+            </Link>
           </div>
         </Form>
       </Container>

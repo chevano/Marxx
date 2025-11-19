@@ -47,9 +47,9 @@ export default function SigninScreen() {
     <div>
       {/* <CheckoutSteps step1 /> */}
       <Container className="small-container">
-        <h1 className="my-3">Sign In</h1>
+        <h1 className="my-3 white_color">Sign In</h1>
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="email">
+          <Form.Group className="mb-3 white_color" controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -58,7 +58,7 @@ export default function SigninScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="password">
+          <Form.Group className="mb-3 white_color" controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -67,13 +67,18 @@ export default function SigninScreen() {
             />
           </Form.Group>
 
-          <div className="mb-3">
+          <div className="mb-3 white_color">
             <Button type="submit">Sign In</Button>
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 white_color">
             New Customer?{' '}
-            <Link to={`/signup?redirect=${redirect}`}>Create an account</Link>
+            <Link
+              className="white_color remove_underline"
+              to={`/signup?redirect=${redirect}`}
+            >
+              Create an account
+            </Link>
           </div>
         </Form>
       </Container>

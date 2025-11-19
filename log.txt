@@ -1650,3 +1650,19 @@ Save Changes and Push it to Github
 758) git add .
 759) git commit -m "Delete User"
 760) git push origin main
+
+==================================
+Updating the CSS for some pages
+==================================
+
+761) Completed
+
+
+=======================================================
+Save Changes and Push it to Github 
+=======================================================
+
+757) Go to Marxx folder
+758) git add .
+759) git commit -m "Updating the CSS for some pages"
+760) git push origin main

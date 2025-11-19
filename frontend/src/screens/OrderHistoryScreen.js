@@ -49,7 +49,8 @@ export default function OrderHistoryScreen() {
 
   return (
     <div>
-      <h1>Order History</h1>
+      <title>Order History</title>
+      <h1 className="my-3 white_color">Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

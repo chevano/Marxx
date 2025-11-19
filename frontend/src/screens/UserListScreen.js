@@ -86,7 +86,7 @@ export default function UserListScreen() {
   return (
     <div>
       <title>List of Users</title>
-      <h1>Users</h1>
+      <h1 className="my-3 white_color">List of Users</h1>
 
       {loadingDelete && <LoadingBox></LoadingBox>}
       {loading ? (

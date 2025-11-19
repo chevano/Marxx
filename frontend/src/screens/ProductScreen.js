@@ -78,7 +78,7 @@ function ProductScreen() {
     <MessageBox variant="danger"> {error} </MessageBox>
   ) : (
     <div>
-      <h1> {name} </h1>
+      <h1 className="my-3 white_color"> {name} </h1>
       <Row>
         <Col md={6}>
           <img className="img-large" src={product.image} alt={product.name} />

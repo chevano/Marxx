@@ -94,7 +94,7 @@ export default function UserEditScreen() {
   return (
     <Container className="small-container">
       <title>Edit User ${userId}</title>
-      <h1>Edit User</h1>
+      <h1 className="my-3 white_color">Edit User</h1>
 
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -102,7 +102,7 @@ export default function UserEditScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="name">
+          <Form.Group className="mb-3 white_color" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               value={name}
@@ -111,7 +111,7 @@ export default function UserEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="email">
+          <Form.Group className="mb-3 white_color" controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
               value={email}
@@ -121,7 +121,7 @@ export default function UserEditScreen() {
           </Form.Group>
 
           <Form.Check
-            className="mb-3"
+            className="mb-3 white_color"
             type="checkbox"
             id="isAdmin"
             label="isAdmin"

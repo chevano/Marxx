@@ -140,7 +140,7 @@ export default function ProductEditScreen() {
   return (
     <Container className="small-container">
       <title>Edit Product ${productId}</title>
-      <h1>Edit Product</h1>
+      <h1 className="my-3 white_color">Edit Product</h1>
 
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -148,7 +148,7 @@ export default function ProductEditScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="name">
+          <Form.Group className="mb-3 white_color" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               value={name}
@@ -157,7 +157,7 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="price">
+          <Form.Group className="mb-3 white_color" controlId="price">
             <Form.Label>Price</Form.Label>
             <Form.Control
               value={price}
@@ -166,7 +166,7 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="image">
+          <Form.Group className="mb-3 white_color" controlId="image">
             <Form.Label>Image File</Form.Label>
             <Form.Control
               value={image}
@@ -175,13 +175,13 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="imageFile">
+          <Form.Group className="mb-3 white_color" controlId="imageFile">
             <Form.Label>Upload File</Form.Label>
             <Form.Control type="file" onChange={uploadFileHandler} />
             {loadingUpload && <LoadingBox></LoadingBox>}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="category">
+          <Form.Group className="mb-3 white_color" controlId="category">
             <Form.Label>Category</Form.Label>
             <Form.Control
               value={category}
@@ -190,7 +190,7 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="countInStock">
+          <Form.Group className="mb-3 white_color" controlId="countInStock">
             <Form.Label>countInStock</Form.Label>
             <Form.Control
               value={countInStock}
@@ -199,7 +199,7 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="brand">
+          <Form.Group className="mb-3 white_color" controlId="brand">
             <Form.Label>Brand</Form.Label>
             <Form.Control
               value={brand}
@@ -208,7 +208,7 @@ export default function ProductEditScreen() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="description">
+          <Form.Group className="mb-3 white_color" controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control
               value={description}

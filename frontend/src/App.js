@@ -73,8 +73,8 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header>
-          <Navbar bg="dark" variant="dark" expand="lg">
-            <Container>
+          <Navbar bg="dark" variant="dark" expand="lg" className="header-box">
+            <Container className="center-1">
               <Button
                 variant="dark"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
@@ -86,7 +86,9 @@ function App() {
               </Link>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <SearchBox />
+                <div className="margin-left">
+                  <SearchBox></SearchBox>
+                </div>
                 <Nav className="me-auto w-100 justify-content-end">
                   <Link to="/cart" className="nav-link">
                     Cart
@@ -157,6 +159,7 @@ function App() {
             </Container>
           </Navbar>
         </header>
+
         <div
           className={
             sidebarIsOpen
@@ -165,12 +168,13 @@ function App() {
           }
         >
           <Nav className="flex-column text-white w-100 p-2">
-            <Nav.Item>
+            <Nav.Item className="my-3">
               <strong>Categories</strong>
             </Nav.Item>
             {categories.map((category) => (
               <Nav.Item key={category}>
                 <Link
+                  className="white_color remove_underline"
                   to={`/search?category=${category}`}
                   onClick={() => setSidebarIsOpen(false)}
                 >
@@ -277,8 +281,9 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
+
+        <footer className="center">
+          <div>All rights reserved</div>
         </footer>
       </div>
     </BrowserRouter>
